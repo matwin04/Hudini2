@@ -311,7 +311,8 @@ body {
     border-left-color: #4285f4;
 }
 
-.segment.metro {
+.segment.metro,
+.segment.bart {
     border-left-color: #ea4335;
 }
 
