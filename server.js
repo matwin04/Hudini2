@@ -21,7 +21,7 @@ const PARTIALS_DIR = path.join(VIEWS_DIR, "partials");
 const PUBLIC_DIR = path.join(__dirname, "public");
 
 // database
-const db = new Database("./brother.db");
+const db = new Database("brother.db");
 
 // handlebars
 app.engine("html", engine({ extname: ".html", defaultLayout: false, partialsDir: PARTIALS_DIR }));
