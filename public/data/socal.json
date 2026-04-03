@@ -1,5 +1,5 @@
 {
-  "sqlitePath": "gtfs.db",
+  "sqlitePath": "./public/data/gtfs.db",
   "agencies": [
     {
       "url": "https://gitlab.com/LACMTA/gtfs_rail/raw/master/gtfs_rail.zip",

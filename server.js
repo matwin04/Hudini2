@@ -66,7 +66,6 @@ app.get("/", (req, res) => {
 });
 app.get("/api/reload",(req,res)=>{
   console.log("Done Reloading GTFS Data");
-  reloadGtfs();
   res.json("done");
 });
 app.get("/api/test",(req,res)=>{
