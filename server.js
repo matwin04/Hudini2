@@ -49,6 +49,7 @@ const GTFSCFG = JSON.parse(await fs.readFile(new URL("./public/data/socal.json",
 async function reloadGtfs() {
   await importGtfs(GTFSCFG);
 }
+reloadGtfs();
 openDb(GTFSCFG);
 // handlebars
 app.engine("html", engine({ extname: ".html", defaultLayout: false, partialsDir: PARTIALS_DIR }));
