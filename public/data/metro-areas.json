@@ -1,0 +1,47 @@
+{
+  "metroAreas": {
+    "SD": {
+      "name": "San Diego",
+      "state": "California",
+      "coords": [-117.1611, 32.7157],
+      "zoom": 11,
+      "masstransit": {},
+      "micromobility": {}
+    },
+    "SF": {
+      "name": "San Francisco",
+      "state": "California",
+      "coords": [-122.4194, 37.7749],
+      "zoom": 12,
+      "masstransit": {},
+      "micromobility": {
+        "baywheels": {
+          "name": "Bay Wheels",
+          "gbfs_url": "https://gbfs.baywheels.com/gbfs/2.3/gbfs.json"
+        }
+      }
+    },
+    "LA": {
+      "name": "Los Angeles",
+      "state": "California",
+      "coords": [-118.2437, 34.0522],
+      "zoom": 10,
+      "masstransit": {
+        "LACMTA_Rail": {
+          "MOTIS_ID": "us-ca-Metro-LosAngeles-Rail"
+        }
+      },
+      "micromobility": {
+        "MBS": {
+          "name": "Metro Bike Share",
+          "gbfs_url": "https://gbfs.bcycle.com/bcycle_lametro",
+          "type": "TransitAgency"
+        },
+        "BIR": {
+          "name": "Bird",
+          "gbfs_url": "https://mds.bird.co/gbfs/v2/public/los-angeles"
+        }
+      }
+    }
+  }
+}

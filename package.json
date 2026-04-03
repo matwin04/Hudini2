@@ -1,0 +1,30 @@
+{
+  "name": "hudini2",
+  "version": "1.0.0",
+  "description": "**Ruined by Matthew Winer** This is just me adding to Andres' project just for fun why not lol.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matwin04/Hudini2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/matwin04/Hudini2/issues"
+  },
+  "homepage": "https://github.com/matwin04/Hudini2#readme",
+  "dependencies": {
+    "@mapbox/polyline": "^1.2.1",
+    "@motis-project/motis-client": "^2.8.3",
+    "better-sqlite3": "^12.6.2",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.6"
+  }
+}

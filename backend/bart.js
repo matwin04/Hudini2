@@ -238,5 +238,4 @@ function calculateFare(path) {
 
   return Math.round(fare * 100) / 100;
 }
-
-module.exports = { stations, findPath, findNearestStations, calculateFare, haversineKm };
+export default {stations, findPath, findNearestStations,calculateFare, haversineKm };

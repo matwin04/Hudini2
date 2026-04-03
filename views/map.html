@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hudini - Multimodal Journey Planner</title>
+
+        <!-- Leaflet CSS -->
+
+        <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/public/styles/style.css" />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+        <link href="../public/styles/style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header">
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <div class="logo">Hudini <span class="logo-subtitle">California</span></div>
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search for a place" />
+                <button class="clear-search" id="clearSearch">×</button>
+            </div>
+            <a href="/api/test">Test Map</a>
+            <a href="/">Home</a>
+        </div>
+
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <select id="metroSelect">
+                        <option value="LA">Select City</option>
+                        <option value="SF">San Francisco</option>
+                        <option value="LA">Los Angeles</option>
+                        <option value="SD">San Diego</option>
+                    </select>
+                    <div id="layer-controls">
+                        <label><input type="checkbox" id="toggle-stations" checked /> Stations</label>
+                        <label><input type="checkbox" id="toggle-rail" checked /> Rail Lines</label>
+                        <label><input type="checkbox" id="toggle-bikes" /> Bike Routes</label>
+                    </div>
+                    <div class="sidebar-title">Find Fastest Route</div>
+                    <div class="route-inputs">
+                        <div class="input-wrapper">
+                            <span class="input-icon">📍</span>
+                            <input type="text" class="route-input" id="startPoint" placeholder="Starting location" />
+                        </div>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🎯</span>
+                            <input type="text" class="route-input" id="endPoint" placeholder="Destination" />
+                        </div>
+                        <div class="departure-time">
+                            <label for="departureTime">Leave at:</label>
+                            <input type="time" id="departureTime" class="time-input" value="09:00" />
+                        </div>
+                        <button class="route-btn" id="getDirections">Find Fastest Route</button>
+                    </div>
+                </div>
+
+                <!-- Route Results -->
+                <div class="route-results" id="routeResults">
+                    <!-- No route message -->
+                    <div class="no-route" id="noRoute">
+                        <div class="no-route-icon">🚗🚇🚶</div>
+                        <p>Enter locations to find the fastest multimodal route</p>
+                    </div>
+
+                    <!-- Fastest route card -->
+                    <div class="route-card fastest" id="fastestRoute" style="display: none">
+                        <div class="route-header">
+                            <div class="route-badge">⚡ FASTEST</div>
+                            <div class="route-time" id="totalTime">25 min</div>
+                        </div>
+
+                        <!-- Route timeline -->
+                        <div class="route-timeline" id="routeTimeline">
+                            <!-- Timeline segments added dynamically -->
+                        </div>
+
+                        <!-- Detailed segments -->
+                        <div class="route-segments" id="routeSegments">
+                            <!-- Segments will be added dynamically -->
+                        </div>
+
+                        <div class="route-footer">
+                            <div class="route-cost" id="routeCost">💰 $5.50</div>
+                            <button class="view-details-btn" id="viewDetails">View Details</button>
+                        </div>
+                    </div>
+                    <div class="departures-section" id="departuresSection" style="display: none">
+                        <div class="departures-header">
+                            <button id="backToRoutes">← Back</button>
+                            <h3 id="departureStationName">Station</h3>
+                        </div>
+
+                        <div id="departuresList">
+                            <!-- departures go here -->
+                        </div>
+                    </div>
+                    <!-- Alternative routes -->
+                    <div class="alternatives-section" id="alternatives" style="display: none">
+                        <div class="alternatives-title">Alternative Routes</div>
+                        <div id="alternativesList">
+                            <!-- Alternative routes will appear here -->
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-container">
+                <div id="map"></div>
+
+                <!-- Route Legend -->
+                <div class="route-legend" id="routeLegend" style="display: none">
+                    <div class="legend-title">Route Legend</div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #4285f4"></span>
+                        <span>Drive</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #ea4335"></span>
+                        <span>Metro</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #34a853"></span>
+                        <span>Bus</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #9aa0a6"></span>
+                        <span>Walk</span>
+                    </div>
+                </div>
+
+                <!-- Layer Switcher -->
+                <div class="layer-switcher">
+                    <button class="layer-btn active" data-layer="street">Map</button>
+                    <button class="layer-btn" data-layer="satellite">Satellite</button>
+                    <button class="layer-btn" data-layer="terrain">Terrain</button>
+                    <button id="transitToggle" class="layer-btn">🚌 Transit</button>
+                </div>
+
+                <!-- Map Controls -->
+                <div class="map-controls">
+                    <button class="control-btn" id="zoomIn" title="Zoom in">+</button>
+                    <button class="control-btn" id="zoomOut" title="Zoom out">−</button>
+                    <button class="control-btn" id="myLocation" title="My location">📍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom JavaScript -->
+        <script src="/public/scripts/map.js"></script>
+    </body>
+</html>

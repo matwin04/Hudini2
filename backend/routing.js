@@ -1,8 +1,8 @@
 // Multimodal routing engine
 // Combines driving (OSRM), BART, and walking into optimal routes
 
-const bart = require('./bart');
-
+//const bart = require('./bart');
+import bart from "./bart.js";
 const NOMINATIM_BASE = 'https://nominatim.openstreetmap.org';
 const OSRM_BASE = 'https://router.project-osrm.org';
 
@@ -28,7 +28,7 @@ async function rateLimitedFetch(url, minDelayMs = 200) {
 }
 
 // Geocode a place name to coordinates using Nominatim
-async function geocode(query) {
+export async function geocode(query) {
   // Check if input looks like coordinates already
   const coordMatch = query.match(/^\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*$/);
   if (coordMatch) {
@@ -197,7 +197,7 @@ async function buildMultimodalOption(startLat, startLng, endLat, endLng, originS
 }
 
 // Main routing function: find the best multimodal routes
-async function findRoutes(startLat, startLng, endLat, endLng, startName, endName) {
+export async function findRoutes(startLat, startLng, endLat, endLng, startName, endName) {
   const options = [];
 
   // 1. Drive-only option
@@ -300,4 +300,4 @@ async function findRoutes(startLat, startLng, endLat, endLng, startName, endName
   return { route, alternatives };
 }
 
-module.exports = { geocode, findRoutes };
+export default {findRoutes,geocode};
