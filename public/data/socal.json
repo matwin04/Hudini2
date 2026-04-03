@@ -2,6 +2,11 @@
   "sqlitePath": "./public/data/gtfs.db",
   "agencies": [
     {
+      "prefix": "BORT",
+      "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
+      "exclude": ["rider_categories"]
+    },
+    {
       "url": "https://gitlab.com/LACMTA/gtfs_rail/raw/master/gtfs_rail.zip",
       "realtimeVehiclePositions": {
         "url": "https://api.goswift.ly/real-time/lametro-rail/gtfs-rt-vehicle-positions",
@@ -15,7 +20,6 @@
           "Authorization": "be6c2a5933d80f7704d2eac5906065c9"
         }
       },
-
       "prefix": "LACMTA_RAIL"
     },
     {
@@ -41,6 +45,5 @@
       }
     }
   ],
-  "exportPath": "./gtfs",
   "ignoreDuplicates": true
 }

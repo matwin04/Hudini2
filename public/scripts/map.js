@@ -194,7 +194,6 @@ function enableTransitPopups() {
     });
 
     map.on("click", "metro-stops-layer", (e) => {
-        
         const f = e.features[0];
 
         const coords = f.geometry.coordinates.slice();
@@ -205,15 +204,20 @@ function enableTransitPopups() {
         const stopId = props.stop_id;
         console.log(stopId);
         new maplibregl.Popup()
-        .setLngLat(coords)
-        .setHTML(`
+            .setLngLat(coords)
+            .setHTML(
+                `
             <div class="popup">
                 <b>${stopName}</b><br>
-                Stop ID: ${stopId}<br><br>
-                <button>View Departures</button>
+                <b>${props.agency}<br>
+                Stop ID: ${stopId}<br>
+                Stop Code: ${props.stop_code}<br>
+                
+                <button onclick="viewDepartures(stopId)">View Departures</button>
             </div>
-        `)
-        .addTo(map);
+        `
+            )
+            .addTo(map);
     });
 }
 
