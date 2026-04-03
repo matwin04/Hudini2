@@ -1,0 +1,3 @@
+feed_publisher_name,feed_publisher_url,feed_lang,default_lang,feed_start_date,feed_end_date,feed_version,feed_contact_email,feed_contact_url
+Los Angeles County Metropolitan Transportation Authority,https://www.metro.net,en,,,,,,http://developer.metro.net
+Metrolink Trains,http://www.metrolinktrains.com,en,,20260320,20360301,20260320,,

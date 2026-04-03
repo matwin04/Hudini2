@@ -1,0 +1,46 @@
+{
+  "sqlitePath": "./gtfs.db",
+  "agencies": [
+    {
+      "url": "https://gitlab.com/LACMTA/gtfs_rail/raw/master/gtfs_rail.zip",
+      "realtimeVehiclePositions": {
+        "url": "https://api.goswift.ly/real-time/lametro-rail/gtfs-rt-vehicle-positions",
+        "headers": {
+          "Authorization": "be6c2a5933d80f7704d2eac5906065c9"
+        }
+      },
+      "realtimeTripUpdates": {
+        "url": "https://api.goswift.ly/real-time/lametro-rail/gtfs-rt-trip-updates",
+        "headers": {
+          "Authorization": "be6c2a5933d80f7704d2eac5906065c9"
+        }
+      },
+
+      "prefix": "LACMTA_RAIL"
+    },
+    {
+      "prefix": "metrolinktrains",
+      "url": "https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip",
+      "realtimeAlerts": {
+        "url": "https://metrolink-gtfsrt.gbsdigital.us/feed/gtfsrt-alerts",
+        "headers": {
+          "X-Api-Key": "gMpUXrGPJJ8X9Pp2OivQC1czi046utCMabRM3XQg"
+        }
+      },
+      "realtimeVehiclePositions": {
+        "url": "https://metrolink-gtfsrt.gbsdigital.us/feed/gtfsrt-vehicles",
+        "headers": {
+          "X-Api-Key": "gMpUXrGPJJ8X9Pp2OivQC1czi046utCMabRM3XQg"
+        }
+      },
+      "realtimeTripUpdates": {
+        "url": "https://metrolink-gtfsrt.gbsdigital.us/feed/gtfsrt-trips",
+        "headers": {
+          "X-Api-Key": "gMpUXrGPJJ8X9Pp2OivQC1czi046utCMabRM3XQg"
+        }
+      }
+    }
+  ],
+  "exportPath": "./gtfs",
+  "ignoreDuplicates": true
+}

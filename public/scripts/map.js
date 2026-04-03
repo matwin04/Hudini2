@@ -165,38 +165,23 @@ function addTransitLayers() {
         }
     });
 }
-
-async function loadTransitStops() {
-    
-    const stopsUrl =
-        "https://transit.land/api/v2/rest/stops?feed_onestop_id=f-9qh-metrolinktrains&format=geojson&limit=250&apikey=dViq8onyBCISi9OShVwn2jbv2WPysTsn";
-
-    try {
-        const response = await fetch(stopsUrl);
-        const geojson = await response.json();
-
-        if (map.getSource("metro-stops")) return;
-
-        map.addSource("metro-stops", {
-            type: "geojson",
-            data: geojson
-        });
-
-        map.addLayer({
-            id: "metro-stops-layer",
-            type: "circle",
-            source: "metro-stops",
-            filter: ["==", ["get", "location_type"], 1],
-            paint: {
-                "circle-radius": 5,
-                "circle-color": "#ffffff",
-                "circle-stroke-color": "#111111",
-                "circle-stroke-width": 2
-            }
-        });
-    } catch (err) {
-        console.error("Failed to load Metro stops:", err);
-    }
+function loadTransitStops() {
+    map.addSource("stops", {
+        type: "geojson",
+        data: "/api/transit/stops.geojson"
+    });
+    map.addLayer({
+        id: "metro-stops-layer",
+        type: "circle",
+        source: "stops",
+        filter: ["==", ["get", "location_type"], 0],
+        paint: {
+            "circle-radius": 5,
+            "circle-color": "#ffffff",
+            "circle-stroke-color": "#111111",
+            "circle-stroke-width": 2
+        }
+    });
 }
 
 function enableTransitPopups() {
@@ -209,16 +194,15 @@ function enableTransitPopups() {
     });
 
     map.on("click", "metro-stops-layer", (e) => {
-        const feature = e.features[0];
+        
+        const f = e.features[0];
 
-        if (!feature) return;
-
-        const coords = feature.geometry.coordinates.slice();
-        const props = feature.properties || {};
+        const coords = f.geometry.coordinates.slice();
+        const props = f.properties;
 
         const stopName = props.stop_name || "Unknown stop";
         console.log(`Getting Children for ${stopName}`);
-        const stopId = props.onestop_id;
+        const stopId = props.stop_id;
         console.log(stopId);
         new maplibregl.Popup()
         .setLngLat(coords)
@@ -226,7 +210,6 @@ function enableTransitPopups() {
             <div class="popup">
                 <b>${stopName}</b><br>
                 Stop ID: ${stopId}<br><br>
-                <a href="/station/${stopId}" class="popup-link">View Departures →</a>
                 <button>View Departures</button>
             </div>
         `)

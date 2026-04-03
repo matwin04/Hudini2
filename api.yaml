@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: Hudini API
+  version: 1.0.0
+paths: 
+  /api/transit/stops.geojson:
+    get:
+      summary: Get /api/transit/stops.geojson
+      responses:
+        '200':
+          description: ''
+  /api/test:
+    get:
+      summary: Test Map 
+      operationId: Busses
+      description: ''
+      
+      responses:
+        '200':
+          description: '' 
+    
+servers:
+  - url: http://localhost:3000
+  - url: https://hudini2.vercel.app
+components:
+  schemas: {}
+  requestBodies: {}
+  securitySchemes: {}
