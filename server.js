@@ -21,7 +21,7 @@ const PARTIALS_DIR = path.join(VIEWS_DIR, "partials");
 const PUBLIC_DIR = path.join(__dirname, "public");
 
 // database
-const db = new Database("brother.db");
+//const db = new Database("brother.db");
 
 // handlebars
 app.engine("html", engine({ extname: ".html", defaultLayout: false, partialsDir: PARTIALS_DIR }));
@@ -39,10 +39,10 @@ app.get("/api/test",(req,res)=>{
   res.render("map");
 });
 // metro areas from DB
-app.get("/api/areas/db", (req, res) => {
+/*app.get("/api/areas/db", (req, res) => {
   const rows = db.prepare("SELECT * FROM cities").all();
   res.json(rows);
-});
+});*/
 
 // metro areas from JSON
 app.get("/api/areas/json", async (req, res) => {
@@ -117,10 +117,10 @@ app.get("/api/directions/motis", async (req, res) => {
     });
   }
 });
-app.get("/api/bikes", (req, res) => {
+/*app.get("/api/bikes", (req, res) => {
   const rows = db.prepare("SELECT * FROM bikeshare").all();
   res.json(rows);
-});
+});*/
 
 app.listen(PORT, () => {
   console.log(`FastRoute running at http://localhost:${PORT}`);
