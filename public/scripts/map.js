@@ -201,7 +201,7 @@ function enableTransitPopups() {
 
         const stopName = props.stop_name || "Unknown stop";
         console.log(`Getting Children for ${stopName}`);
-        const stopId = props.stop_id;
+        const stopId = props.stop_code;
         console.log(stopId);
         new maplibregl.Popup()
             .setLngLat(coords)
@@ -213,7 +213,10 @@ function enableTransitPopups() {
                 Stop ID: ${stopId}<br>
                 Stop Code: ${props.stop_code}<br>
                 
-                <button onclick="viewDepartures(stopId)">View Departures</button>
+                <button onclick=viewDepartures(${stopId})>View Departures</button>
+                
+                <button onclick=setOrigin(${stopId})>View Departures</button>
+                <button onclick=setDestination(${stopId})>View Departures</button>
             </div>
         `
             )
