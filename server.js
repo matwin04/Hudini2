@@ -94,23 +94,7 @@ app.get("/api/bikes/:city", async (req, res) => {
 
   res.json(metro.micromobility);
 });
-app.get("/api/departures/motis/:stopId", async (req, res) => {
-  const stopId = req.params.stopId;
 
-  const data = await fetch(
-    `https://transit.land/api/v2/rest/stops/${stopId}/departures?apikey=dViq8onyBCISi9OShVwn2jbv2WPysTsn`
-  );
-
-  res.json(data);
-});
-//
-app.get("/api/departures/transitland/:stopId", async (req, res) => {
-  const stopId = req.params.stopId;
-  const data = await fetch(
-    `https://transit.land/api/v2/rest/stops/${stopId}/departures?include_alerts=true&apikey=dViq8onyBCISi9OShVwn2jbv2WPysTs`
-  );
-  res.json(data);
-});
 app.get("/api/transit/overview", async (req, res) => {
   const city = req.params.city;
   const data = JSON.parse(await fs.readFile("./public/data/metro-areas.json", "utf8"));
@@ -130,11 +114,20 @@ app.get("/api/transit/stops.geojson", async (req, res) => {
   const rows = db.prepare("SELECT * FROM bikeshare").all();
   res.json(rows);
 });*/
+app.get("/api/departures",async(req,res)=>{
+  const {stopId}=req.query;
+  const response = await fetch(
+    `https://api.transitous.org/api/v5/stoptimes?stopId=${stopId}`
+  );
+  const data = await response.json();
+  res.json(data);
+  
+});
 app.get("/api/directions", async (req, res) => {
   try {
     const { from, to } = req.query;
     const response = await fetch(
-      `https://api.transitous.org/api/v5/plan?fromPlace=${from}&toPlace=${to}&withFares=true`
+      `https://api.transitous.org/api/v5/plan?fromPlace=${from}&toPlace=${to}&withFares=true&joinInterlinedLegs=true`
     );
     const data = await response.json();
     res.json(data);

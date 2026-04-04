@@ -1,37 +1,202 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hudini - Multimodal Journey Planner</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hudini - Multimodal Journey Planner</title>
 
-        <!-- Leaflet CSS --->
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
 
-        <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
-        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link rel="stylesheet" href="/public/styles/style.css" />
+    <link rel="stylesheet" href="/public/styles/hudini-layout.css" />
+</head>
+<body>
+<div class="app-shell">
+    <div class="header">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle sidebar" type="button">
+            <span class="mdi mdi-menu"></span>
+        </button>
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/public/styles/style.css" />
-        <link href="main.css" rel="stylesheet" type="text/css" />
-        <link href="../public/styles/style.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-        <!-- Header -->
-        <div class="header">
-            <button class="menu-btn" id="menuBtn">☰</button>
-            <div class="logo">Hudini <span class="logo-subtitle">California</span></div>
-            <div class="search-container">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-box" id="searchBox" placeholder="Search for a place" />
-                <button class="clear-search" id="clearSearch">×</button>
-            </div>
-            <a href="/api/test">Test Map</a>
-            <a href="/">Home</a>
+        <div class="logo">Hudini <span class="logo-subtitle">California</span></div>
+
+        <div class="search-container">
+            <span class="search-icon mdi mdi-magnify"></span>
+            <input
+                type="text"
+                class="search-box"
+                id="searchBox"
+                placeholder="Search for a station by name or ID"
+            />
+            <button class="clear-search" id="clearSearch" type="button" aria-label="Clear search">
+                <span class="mdi mdi-close"></span>
+            </button>
         </div>
-        <h1>Houdini Backend Server</h1>
-        <a href="/api/test">Click to See API</a>
-        <a href="/api/transit/stops.geojson">Stops</a>
-        <!-- Custom JavaScript -->
-        <script src="/public/scripts/map.js"></script>
-    </body>
+
+        <a href="/api/test">Test Map</a>
+        <a href="/">Home</a>
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-topbar">
+                    <select id="metroSelect" class="metro-select">
+                        <option value="LA">Los Angeles</option>
+                        <option value="SF">San Francisco</option>
+                        <option value="SD">San Diego</option>
+                    </select>
+
+                    <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" type="button">
+                        <span class="mdi mdi-chevron-left"></span>
+                        <span>Hide</span>
+                    </button>
+                </div>
+
+                <div id="layer-controls" class="layer-controls">
+                    <label><input type="checkbox" id="toggle-stations" checked /> Stations</label>
+                    <label><input type="checkbox" id="toggle-rail" checked /> Rail Lines</label>
+                    <label><input type="checkbox" id="toggle-bikes" /> Bike Routes</label>
+                </div>
+
+                <div class="sidebar-title">Find Fastest Route</div>
+
+                <div class="route-inputs">
+                    <div class="input-wrapper route-field">
+                        <span class="input-icon mdi mdi-map-marker-outline"></span>
+                        <input type="text" class="route-input" id="startPoint" placeholder="Starting stop ID" />
+                        <button type="button" class="clear-route-field" id="clearStart" aria-label="Clear start">
+                            <span class="mdi mdi-close"></span>
+                        </button>
+                    </div>
+
+                    <div class="input-wrapper route-field">
+                        <span class="input-icon mdi mdi-flag-checkered"></span>
+                        <input type="text" class="route-input" id="endPoint" placeholder="Destination stop ID" />
+                        <button type="button" class="clear-route-field" id="clearEnd" aria-label="Clear destination">
+                            <span class="mdi mdi-close"></span>
+                        </button>
+                    </div>
+
+                    <div class="departure-time">
+                        <label for="departureTime">
+                            <span class="mdi mdi-clock-outline"></span>
+                            <span>Leave at:</span>
+                        </label>
+                        <input type="time" id="departureTime" class="time-input" value="09:00" />
+                    </div>
+
+                    <button class="route-btn" id="getDirections" type="button">
+                        <span class="mdi mdi-directions"></span>
+                        <span>Find Fastest Route</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="route-results" id="routeResults">
+                <div class="no-route" id="noRoute">
+                    <div class="no-route-icon">
+                        <span class="mdi mdi-transit-connection-variant"></span>
+                    </div>
+                    <p>Choose an origin and destination from station popups, or type stop IDs manually.</p>
+                </div>
+
+                <div class="route-card fastest" id="fastestRoute" style="display:none;">
+                    <div class="route-header">
+                        <div class="route-badge">
+                            <span class="mdi mdi-flash"></span>
+                            <span>FASTEST</span>
+                        </div>
+                        <div class="route-time" id="totalTime">25 min</div>
+                    </div>
+
+                    <div class="route-timeline" id="routeTimeline"></div>
+                    <div class="route-segments" id="routeSegments"></div>
+
+                    <div class="route-footer">
+                        <div class="route-cost" id="routeCost">Fare unavailable</div>
+                        <button class="view-details-btn" id="viewDetails" type="button">
+                            <span class="mdi mdi-check-circle-outline"></span>
+                            <span>Selected Route</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="departures-section" id="departuresSection" style="display:none;">
+                    <div class="departures-header">
+                        <button id="backToRoutes" type="button">
+                            <span class="mdi mdi-arrow-left"></span>
+                            <span>Back</span>
+                        </button>
+                        <h3 id="departureStationName">Station</h3>
+                    </div>
+                    <div id="departuresList"></div>
+                </div>
+
+                <div class="alternatives-section" id="alternatives" style="display:none;">
+                    <div class="alternatives-title">Alternative Routes</div>
+                    <div id="alternativesList"></div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="map-container">
+            <div id="map"></div>
+
+            <div class="route-legend" id="routeLegend" style="display:none;">
+                <div class="legend-title">Route Legend</div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#4285f4"></span>
+                    <span>Rail</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#ea4335"></span>
+                    <span>Subway</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#34a853"></span>
+                    <span>Bus</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#9aa0a6"></span>
+                    <span>Walk</span>
+                </div>
+            </div>
+
+            <div class="layer-switcher">
+                <button class="layer-btn" data-layer="street" type="button">
+                    <span class="mdi mdi-map-outline"></span>
+                    <span>Map</span>
+                </button>
+                <button class="layer-btn" data-layer="satellite" type="button">
+                    <span class="mdi mdi-satellite-variant"></span>
+                    <span>Satellite</span>
+                </button>
+                <button class="layer-btn active" data-layer="terrain" type="button">
+                    <span class="mdi mdi-image-filter-hdr"></span>
+                    <span>Terrain</span>
+                </button>
+                <button id="transitToggle" class="layer-btn active" type="button">
+                    <span class="mdi mdi-train"></span>
+                    <span>Transit</span>
+                </button>
+            </div>
+
+            <div class="map-controls">
+                <button class="control-btn" id="zoomIn" title="Zoom in" type="button">
+                    <span class="mdi mdi-plus"></span>
+                </button>
+                <button class="control-btn" id="zoomOut" title="Zoom out" type="button">
+                    <span class="mdi mdi-minus"></span>
+                </button>
+                <button class="control-btn" id="myLocation" title="My location" type="button">
+                    <span class="mdi mdi-crosshairs-gps"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/public/scripts/map.js"></script>
+</body>
 </html>
