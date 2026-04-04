@@ -62,13 +62,12 @@ app.use("/public", express.static(PUBLIC_DIR));
 // home
 app.get("/", (req, res) => {
   res.render("index");
-  
 });
-app.get("/api/reload",(req,res)=>{
+app.get("/api/reload", (req, res) => {
   console.log("Done Reloading GTFS Data");
   res.json("done");
 });
-app.get("/api/test",(req,res)=>{
+app.get("/api/test", (req, res) => {
   res.render("map");
 });
 // metro areas from DB
@@ -122,16 +121,31 @@ app.get("/api/transit/overview", async (req, res) => {
   res.json(metro.masstransit);
 });
 app.get("/api/transit/stops.geojson", async (req, res) => {
-    const { stop_id } = req.query;
-    const stops = stop_id ? getStopsAsGeoJSON(stop_id) : getStopsAsGeoJSON();
-    res.json(stops);
+  const { stop_id } = req.query;
+  const stops = stop_id ? getStopsAsGeoJSON(stop_id) : getStopsAsGeoJSON();
+  res.json(stops);
 });
 
 /*app.get("/api/bikes", (req, res) => {
   const rows = db.prepare("SELECT * FROM bikeshare").all();
   res.json(rows);
 });*/
-
+app.get("/api/directions", async (req, res) => {
+  try {
+    const { from, to } = req.query;
+    const response = await fetch(
+      `https://api.transitous.org/api/v5/plan?fromPlace=${from}&toPlace=${to}&withFares=true`
+    );
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    console.error("MOTIS directions error:", err);
+    res.status(500).json({
+      error: "Failed to get directions",
+      details: err.message
+    });
+  }
+});
 app.listen(PORT, () => {
   console.log(`FastRoute running at http://localhost:${PORT}`);
 });

@@ -23,7 +23,7 @@
       "prefix": "us-ca-Metro-LosAngeles-Rail_"
     },
     {
-      "prefix": "metrolinktrains",
+      "prefix": "us-ca-Metrolink_",
       "url": "https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip",
       "realtimeAlerts": {
         "url": "https://metrolink-gtfsrt.gbsdigital.us/feed/gtfsrt-alerts",

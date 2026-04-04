@@ -10,14 +10,51 @@ let map;
 let origin = null;
 let destination = null;
 
-function setOrigin(stopId, lng, lat) {
-    origin = { stopId, coords: [lng, lat] };
+function setOrigin(stopId) {
+    origin = stopId;
     console.log("Origin:", origin);
+    document.getElementById("startPoint").value = stopId;
 }
 
-function setDestination(stopId, lng, lat) {
-    destination = { stopId, coords: [lng, lat] };
+function setDestination(stopId) {
+    destination = stopId;
     console.log("Destination:", destination);
+    document.getElementById("endPoint").value = stopId;
+}
+
+async function getDirections() {
+    if (!origin || !destination) {
+        alert("Pick an origin and destination first");
+        return;
+    }
+
+    try {
+        const params = new URLSearchParams({
+            from: origin,
+            to: destination
+        });
+
+        const res = await fetch(`/api/directions?${params.toString()}`);
+        const data = await res.json();
+
+        if (!res.ok) {
+            console.error("Directions error:", data);
+            alert(data.error || "Failed to get directions");
+            return;
+        }
+
+        console.log("Directions:", data);
+
+        document.getElementById("noRoute").style.display = "none";
+        document.getElementById("departuresSection").style.display = "none";
+        document.getElementById("fastestRoute").style.display = "block";
+        document.getElementById("alternatives").style.display = "block";
+
+        renderDirections(data);
+    } catch (err) {
+        console.error(err);
+        alert("Network error while getting directions");
+    }
 }
 
 async function viewDepartures(stopId) {
@@ -29,14 +66,17 @@ async function viewDepartures(stopId) {
 
     const section = document.getElementById("departuresSection");
     const list = document.getElementById("departuresList");
+    const stationName = document.getElementById("departureStationName");
 
     section.style.display = "block";
     list.innerHTML = "<p>Loading departures...</p>";
+    stationName.textContent = stopId;
 
     try {
         const res = await fetch(`/api/departures/transitland/${stopId}`);
         const data = await res.json();
 
+        console.log("Departures raw:", data);
         renderDepartures(data);
     } catch (err) {
         console.error(err);
@@ -48,12 +88,14 @@ function renderDepartures(data) {
     const list = document.getElementById("departuresList");
     list.innerHTML = "";
 
-    if (!data || data.length === 0) {
+    const departures = Array.isArray(data) ? data : data.departures || [];
+
+    if (!departures.length) {
         list.innerHTML = "<p>No departures found</p>";
         return;
     }
 
-    data.forEach((dep) => {
+    departures.forEach((dep) => {
         const div = document.createElement("div");
         div.className = "departure-card";
 
@@ -82,6 +124,43 @@ function renderDepartures(data) {
     });
 }
 
+function renderDirections(data) {
+    const totalTime = document.getElementById("totalTime");
+    const routeTimeline = document.getElementById("routeTimeline");
+    const routeSegments = document.getElementById("routeSegments");
+    const alternativesList = document.getElementById("alternativesList");
+
+    routeTimeline.innerHTML = "";
+    routeSegments.innerHTML = "";
+    alternativesList.innerHTML = "";
+
+    const itineraries = data?.itineraries || data?.routes || data?.plan?.itineraries || [];
+
+    if (!itineraries.length) {
+        document.getElementById("fastestRoute").style.display = "none";
+        document.getElementById("alternatives").style.display = "none";
+        document.getElementById("noRoute").style.display = "block";
+        return;
+    }
+
+    const fastest = itineraries[0];
+    const duration = fastest.duration || fastest.durationMinutes || fastest.totalDuration || "?";
+
+    totalTime.textContent = `${duration} min`;
+
+    const summary = document.createElement("div");
+    summary.className = "route-segment";
+    summary.innerHTML = `<pre>${JSON.stringify(fastest, null, 2)}</pre>`;
+    routeSegments.appendChild(summary);
+
+    itineraries.slice(1).forEach((itinerary, i) => {
+        const div = document.createElement("div");
+        div.className = "route-card";
+        div.innerHTML = `<div class="route-header"><div class="route-badge">ALT ${i + 1}</div></div>`;
+        alternativesList.appendChild(div);
+    });
+}
+
 async function getMetroAreas() {
     const response = await fetch("/public/data/metro-areas.json");
     const data = await response.json();
@@ -102,6 +181,23 @@ async function init() {
         addTransitLayers();
         loadTransitStops();
         enableTransitPopups();
+    });
+
+    document.getElementById("getDirections").addEventListener("click", getDirections);
+
+    document.getElementById("metroSelect").addEventListener("change", (e) => {
+        switchMetro(e.target.value);
+    });
+
+    document.getElementById("backToRoutes").addEventListener("click", () => {
+        document.getElementById("departuresSection").style.display = "none";
+
+        if (origin && destination) {
+            document.getElementById("fastestRoute").style.display = "block";
+            document.getElementById("alternatives").style.display = "block";
+        } else {
+            document.getElementById("noRoute").style.display = "block";
+        }
     });
 }
 
@@ -165,11 +261,13 @@ function addTransitLayers() {
         }
     });
 }
+
 function loadTransitStops() {
     map.addSource("stops", {
         type: "geojson",
         data: "/api/transit/stops.geojson"
     });
+
     map.addLayer({
         id: "metro-stops-layer",
         type: "circle",
@@ -195,30 +293,23 @@ function enableTransitPopups() {
 
     map.on("click", "metro-stops-layer", (e) => {
         const f = e.features[0];
-
         const coords = f.geometry.coordinates.slice();
         const props = f.properties;
 
-        const stopName = props.stop_name || "Unknown stop";
-        console.log(`Getting Children for ${stopName}`);
-        const stopId = props.stop_code;
-        console.log(stopId);
         new maplibregl.Popup()
             .setLngLat(coords)
             .setHTML(
                 `
-            <div class="popup">
-                <b>${stopName}</b><br>
-                <b>${props.agency}<br>
-                Stop ID: ${stopId}<br>
-                Stop Code: ${props.stop_code}<br>
-                
-                <button onclick=viewDepartures(${stopId})>View Departures</button>
-                
-                <button onclick=setOrigin(${stopId})>View Departures</button>
-                <button onclick=setDestination(${stopId})>View Departures</button>
-            </div>
-        `
+                <div class="popup">
+                    <b>${props.stop_name || "Unknown stop"}</b><br>
+                    Stop ID: ${props.stop_id || ""}<br>
+                    Stop Code: ${props.stop_code || ""}<br>
+
+                    <button onclick="viewDepartures('${props.stop_id}')">View Departures</button>
+                    <button onclick="setOrigin('${props.stop_id}')">Set Origin</button>
+                    <button onclick="setDestination('${props.stop_id}')">Set Destination</button>
+                </div>
+            `
             )
             .addTo(map);
     });
@@ -252,14 +343,5 @@ function getMinutesAway(timeStr) {
 
     return Math.max(0, Math.round((dep - now) / 60000));
 }
-function showStopPopup(e) {
-    const f = e.features[0];
-    const p = f.properties;
-    const station_info = document.getElementById("station-info");
-    station_info.innerHTML = `
-        <div class="stop_name">${p.stop_name}</div>
-        ${p.stop_id}<br>
-        
-    `;
-}
+
 init();
