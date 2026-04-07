@@ -1,522 +1,196 @@
-let metroAreas = {};
-
-const baseStyles = {
-    street: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
-    satellite: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
-    terrain: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
-};
+// ==============================
+// GLOBAL STATE
+// ==============================
 
 let map;
-let origin = null;
-let destination = null;
-let allStops = [];
-let searchMarker = null;
-let routeLayerIds = [];
-let routeSourceIds = [];
-let transitVisible = true;
-let sidebarCollapsed = false;
+let originMarker;
+let destinationMarker;
+let clickPopup = null;
 
-const MODE_ICONS = {
-    WALK: "🚶",
-    BUS: "🚌",
-    TRAM: "🚊",
-    SUBWAY: "🚇",
-    RAIL: "🚆",
-    GONDOLA: "🚠",
-    FERRY: "⛴️",
-    CAR: "🚗",
-    BICYCLE: "🚲"
-};
+let itineraryLayers = [];
+let selectedItineraryIndex = null;
+let transferSourceId = "transfer-points";
 
-function setOrigin(stopId) {
-    origin = stopId;
-    document.getElementById("startPoint").value = stopId;
-    updateClearButtons();
-}
+// ==============================
+// MAP INIT
+// ==============================
 
-function setDestination(stopId) {
-    destination = stopId;
-    document.getElementById("endPoint").value = stopId;
-    updateClearButtons();
-}
-
-function clearOrigin() {
-    origin = null;
-    document.getElementById("startPoint").value = "";
-    updateClearButtons();
-}
-
-function clearDestination() {
-    destination = null;
-    document.getElementById("endPoint").value = "";
-    updateClearButtons();
-}
-
-function updateClearButtons() {
-    const startPoint = document.getElementById("startPoint");
-    const endPoint = document.getElementById("endPoint");
-    const clearStart = document.getElementById("clearStart");
-    const clearEnd = document.getElementById("clearEnd");
-    
-    if (clearStart) clearStart.style.display = startPoint.value ? "block" : "none";
-    if (clearEnd) clearEnd.style.display = endPoint.value ? "block" : "none";
-    
-    startPoint.classList.toggle("has-clear", !!startPoint.value);
-    endPoint.classList.toggle("has-clear", !!endPoint.value);
-}
-
-async function getDirections() {
-    if (!origin || !destination) {
-        alert("Pick an origin and destination first");
-        return;
-    }
-    
-    try {
-        const departureTimeInput = document.getElementById("departureTime");
-        const params = new URLSearchParams({
-            from: origin,
-            to: destination
-        });
-        
-        if (departureTimeInput && departureTimeInput.value) {
-            params.set("time", departureTimeInput.value);
-        }
-        
-        const res = await fetch(`/api/directions?${params.toString()}`);
-        const data = await res.json();
-        
-        if (!res.ok) {
-            console.error("Directions error:", data);
-            alert(data.error || "Failed to get directions");
-            return;
-        }
-        
-        document.getElementById("noRoute").style.display = "none";
-        document.getElementById("departuresSection").style.display = "none";
-        
-        renderDirections(data);
-    } catch (err) {
-        console.error(err);
-        alert("Network error while getting directions");
-    }
-}
-
-async function viewDepartures(stopId) {
-    document.getElementById("noRoute").style.display = "none";
-    document.getElementById("fastestRoute").style.display = "none";
-    document.getElementById("alternatives").style.display = "none";
-    
-    const section = document.getElementById("departuresSection");
-    const list = document.getElementById("departuresList");
-    const stationName = document.getElementById("departureStationName");
-    
-    section.style.display = "block";
-    list.innerHTML = "<p>Loading departures...</p>";
-    stationName.textContent = stopId;
-    
-    try {
-        const res = await fetch(`/api/departures?stopId=${stopId}`);
-        const data = await res.json();
-        renderDepartures(data);
-    } catch (err) {
-        console.error(err);
-        list.innerHTML = "<p>Error loading departures</p>";
-    }
-}
-
-function renderDepartures(data) {
-    const list = document.getElementById("departuresList");
-    list.innerHTML = "";
-    
-    const departures =
-    Array.isArray(data) ? data :
-    Array.isArray(data?.departures) ? data.departures :
-    Array.isArray(data?.stop_departures) ? data.stop_departures :
-    [];
-    
-    if (!departures.length) {
-        list.innerHTML = "<p>No departures found</p>";
-        return;
-    }
-    
-    departures.forEach((dep) => {
-        const div = document.createElement("div");
-        div.className = "departure-card";
-        
-        const rawColor = dep.route_color || dep.route?.route_color || "666666";
-        const bgColor = rawColor.startsWith("#") ? rawColor : `#${rawColor}`;
-        
-        div.innerHTML = `
-            <div class="dep-left">
-                <div class="dep-route" style="background:${bgColor}">
-                    ${dep.route_short_name || dep.route?.route_short_name || ""}
-        </div>
-        </div>
-        
-        <div class="dep-middle">
-        <div class="dep-destination">
-        ${dep.trip_headsign || dep.headsign || "Unknown"}
-        </div>
-        <div class="dep-time">
-        ${formatTime(dep.departure_time || dep.departure?.scheduled_time)}
-        </div>
-        </div>
-        
-        <div class="dep-right">
-        ${getMinutesAway(dep.departure_time || dep.departure?.scheduled_time)} min
-        </div>
-        `;
-
-        list.appendChild(div);
-    });
-}
-
-function renderDirections(data) {
-    const itineraries = data.itineraries || data.plan?.itineraries || [];
-
-    const fastestRoute = document.getElementById("fastestRoute");
-    const alternatives = document.getElementById("alternatives");
-    const noRoute = document.getElementById("noRoute");
-    const totalTime = document.getElementById("totalTime");
-    const routeCost = document.getElementById("routeCost");
-    const routeTimeline = document.getElementById("routeTimeline");
-    const routeSegments = document.getElementById("routeSegments");
-    const alternativesList = document.getElementById("alternativesList");
-
-    routeTimeline.innerHTML = "";
-    routeSegments.innerHTML = "";
-    alternativesList.innerHTML = "";
-
-    if (!itineraries.length) {
-        fastestRoute.style.display = "none";
-        alternatives.style.display = "none";
-        noRoute.style.display = "block";
-        clearRouteLines();
-        document.getElementById("routeLegend").style.display = "none";
-        return;
-    }
-
-    const fastest = itineraries[0];
-
-    noRoute.style.display = "none";
-    fastestRoute.style.display = "block";
-    alternatives.style.display = itineraries.length > 1 ? "block" : "none";
-
-    totalTime.textContent = `${getItineraryDurationMinutes(fastest)} min`;
-    routeCost.textContent = getFareText(fastest);
-
-    renderTimeline(fastest, routeTimeline);
-    renderSegments(fastest, routeSegments);
-    drawItineraryOnMap(fastest);
-
-    itineraries.slice(1).forEach((itinerary, i) => {
-        const index = i + 1;
-        const card = document.createElement("div");
-        card.className = "route-card alternative-card";
-        card.innerHTML = `
-        <div class="route-header">
-        <div class="route-badge">ALT ${index}</div>
-        <div class="route-time">${getItineraryDurationMinutes(itinerary)} min</div>
-        </div>
-        <div class="route-footer">
-        <div>${buildMiniLegSummary(itinerary)}</div>
-        <button class="view-details-btn" data-itinerary-index="${index}">Use This Route</button>
-        </div>
-        `;
-        alternativesList.appendChild(card);
+function initMap() {
+    map = new maplibregl.Map({
+        container: "map",
+        style: {
+            version: 8,
+            sources: {
+                carto: {
+                    type: "raster",
+                    tiles: [
+                        "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+                        "https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+                        "https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+                    ],
+                    tileSize: 256
+                }
+            },
+            layers: [{
+                id: "carto-layer",
+                type: "raster",
+                source: "carto"
+            }]
+        },
+        center: [-118.2437, 34.0522],
+        zoom: 11
     });
 
-    alternativesList.querySelectorAll("[data-itinerary-index]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const index = Number(btn.dataset.itineraryIndex);
-            const itinerary = itineraries[index];
-
-            totalTime.textContent = `${getItineraryDurationMinutes(itinerary)} min`;
-            routeCost.textContent = getFareText(itinerary);
-            routeTimeline.innerHTML = "";
-            routeSegments.innerHTML = "";
-
-            renderTimeline(itinerary, routeTimeline);
-            renderSegments(itinerary, routeSegments);
-            drawItineraryOnMap(itinerary);
-        });
-    });
+    map.addControl(new maplibregl.NavigationControl());
+    map.on("load", initLocation);
 }
 
-function renderTimeline(itinerary, container) {
-    const legs = itinerary.legs || [];
+// ==============================
+// LOCATION
+// ==============================
 
-    legs.forEach((leg, i) => {
-        const item = document.createElement("div");
-        item.className = "timeline-leg";
+function initLocation() {
+    if (!navigator.geolocation) return fallbackLocation();
 
-        const mode = getLegMode(leg);
-        const icon = MODE_ICONS[mode] || "➡️";
-        const color = getLegColor(leg);
+    navigator.geolocation.getCurrentPosition(
+        pos => {
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
 
-        item.innerHTML = `
-        <span class="timeline-dot-inline" style="background:${color}"></span>
-        <span>${icon}</span>
-        <span>${getLegLabel(leg)}</span>
-        ${i < legs.length - 1 ? '<span class="timeline-arrow">→</span>' : ""}
-        `;
+            map.flyTo({ center: [lng, lat], zoom: 13 });
 
-        container.appendChild(item);
-    });
-}
+            // default origin = current location
+            setOriginMarker(lng, lat);
 
-function renderSegments(itinerary, container) {
-    const legs = itinerary.legs || [];
+            // default destination nearby so planTrip can still work immediately
+            setDestinationMarker(lng + 0.02, lat + 0.02);
 
-    legs.forEach((leg) => {
-        const mode = getLegMode(leg).toLowerCase();
-        const icon = MODE_ICONS[getLegMode(leg)] || "➡️";
-        const color = getLegColor(leg);
-
-        const fromName = leg.from?.name || leg.from?.stop?.name || leg.from?.place?.name || "Start";
-        const toName = leg.to?.name || leg.to?.stop?.name || leg.to?.place?.name || "End";
-        const startTime = formatIsoOrOtpTime(leg.startTime || leg.start_time);
-        const endTime = formatIsoOrOtpTime(leg.endTime || leg.end_time);
-
-        const card = document.createElement("div");
-        card.className = `segment ${mode}`;
-        card.style.borderLeftColor = color;
-
-        card.innerHTML = `
-        <div class="segment-icon">${icon}</div>
-        <div class="segment-info">
-        <div class="segment-mode">${getLegLabel(leg)}</div>
-        <div class="segment-details">${fromName} → ${toName}</div>
-        <div class="segment-details">${startTime} - ${endTime}</div>
-        </div>
-        <div class="segment-time">${getLegDurationMinutes(leg)} min</div>
-        `;
-
-        container.appendChild(card);
-    });
-}
-
-function buildMiniLegSummary(itinerary) {
-    return (itinerary.legs || [])
-        .map((leg) => `${MODE_ICONS[getLegMode(leg)] || "➡️"} ${getLegShortName(leg)}`)
-        .join(" ");
-}
-
-function getLegMode(leg) {
-    return leg.mode || leg.transitMode || leg.routeType || "WALK";
-}
-
-function getLegShortName(leg) {
-    return (
-        leg.routeShortName ||
-        leg.route_short_name ||
-        leg.routeLongName ||
-        leg.route_long_name ||
-        leg.headsign ||
-        getLegMode(leg)
+            enableMapClickSelector();
+        },
+        fallbackLocation
     );
 }
 
-function getLegLabel(leg) {
-    const mode = getLegMode(leg);
-    const shortName = getLegShortName(leg);
+function fallbackLocation() {
+    const lat = 34.0522;
+    const lng = -118.2437;
 
-    if (mode === "WALK") return "Walk";
-    if (shortName && shortName !== mode) return `${mode} ${shortName}`;
-    return mode;
+    map.setCenter([lng, lat]);
+    setOriginMarker(lng, lat);
+    setDestinationMarker(lng + 0.02, lat + 0.02);
+    enableMapClickSelector();
 }
 
-function getLegColor(leg) {
-    const raw = leg.routeColor || leg.route_color;
+// ==============================
+// MARKERS
+// ==============================
 
-    if (raw) return raw.startsWith("#") ? raw : `#${raw}`;
+function setOriginMarker(lng, lat) {
+    if (originMarker) originMarker.remove();
 
-    const mode = getLegMode(leg);
-    if (mode === "WALK") return "#9aa0a6";
-    if (mode === "BUS") return "#34a853";
-    if (mode === "TRAM") return "#fbbc05";
-    if (mode === "SUBWAY") return "#ea4335";
-    if (mode === "RAIL") return "#4285f4";
-    return "#666666";
+    originMarker = new maplibregl.Marker({
+        color: "#16a34a",
+        draggable: false
+    })
+        .setLngLat([lng, lat])
+        .setPopup(new maplibregl.Popup({ offset: 20 }).setHTML("<strong>Origin</strong>"))
+        .addTo(map);
 }
 
-function getItineraryDurationMinutes(itinerary) {
-    if (typeof itinerary.duration === "number") return Math.round(itinerary.duration / 60);
-    if (typeof itinerary.durationMinutes === "number") return itinerary.durationMinutes;
+function setDestinationMarker(lng, lat) {
+    if (destinationMarker) destinationMarker.remove();
 
-    const start = itinerary.startTime || itinerary.start_time;
-    const end = itinerary.endTime || itinerary.end_time;
+    destinationMarker = new maplibregl.Marker({
+        color: "#dc2626",
+        draggable: false
+    })
+        .setLngLat([lng, lat])
+        .setPopup(new maplibregl.Popup({ offset: 20 }).setHTML("<strong>Destination</strong>"))
+        .addTo(map);
+}
 
-    if (start && end) {
-        return Math.round((new Date(end) - new Date(start)) / 60000);
+// ==============================
+// CLICK SELECTOR
+// ==============================
+
+function enableMapClickSelector() {
+    map.on("click", (e) => {
+        const lng = e.lngLat.lng;
+        const lat = e.lngLat.lat;
+
+        showPointChooser(lng, lat);
+    });
+}
+
+function showPointChooser(lng, lat) {
+    if (clickPopup) {
+        clickPopup.remove();
     }
 
-    return "?";
-}
+    const wrapper = document.createElement("div");
+    wrapper.className = "point-chooser";
 
-function getLegDurationMinutes(leg) {
-    if (typeof leg.duration === "number") return Math.round(leg.duration / 60);
+    const title = document.createElement("div");
+    title.className = "point-chooser-title";
+    title.textContent = "Use this point as:";
+    wrapper.appendChild(title);
 
-    const start = leg.startTime || leg.start_time;
-    const end = leg.endTime || leg.end_time;
+    const buttons = document.createElement("div");
+    buttons.className = "point-chooser-buttons";
 
-    if (start && end) {
-        return Math.round((new Date(end) - new Date(start)) / 60000);
-    }
-
-    return "?";
-}
-
-function getFareText(itinerary) {
-    const fare = itinerary.fare?.fare?.regular?.cents ?? itinerary.fare?.cents ?? itinerary.fare?.amount;
-    if (fare == null) return "💰 Fare unavailable";
-    if (fare > 20) return `💰 $${(fare / 100).toFixed(2)}`;
-    return `💰 $${Number(fare).toFixed(2)}`;
-}
-
-function clearRouteLines() {
-    routeLayerIds.forEach((id) => {
-        if (map.getLayer(id)) map.removeLayer(id);
+    const originBtn = document.createElement("button");
+    originBtn.type = "button";
+    originBtn.className = "chooser-btn chooser-origin";
+    originBtn.textContent = "Origin";
+    originBtn.addEventListener("click", () => {
+        setOriginMarker(lng, lat);
+        if (clickPopup) clickPopup.remove();
     });
 
-    routeSourceIds.forEach((id) => {
-        if (map.getSource(id)) map.removeSource(id);
+    const destBtn = document.createElement("button");
+    destBtn.type = "button";
+    destBtn.className = "chooser-btn chooser-destination";
+    destBtn.textContent = "Destination";
+    destBtn.addEventListener("click", () => {
+        setDestinationMarker(lng, lat);
+        if (clickPopup) clickPopup.remove();
     });
 
-    routeLayerIds = [];
-    routeSourceIds = [];
+    buttons.appendChild(originBtn);
+    buttons.appendChild(destBtn);
+    wrapper.appendChild(buttons);
+
+    clickPopup = new maplibregl.Popup({
+        closeButton: true,
+        closeOnClick: true,
+        offset: 16
+    })
+        .setLngLat([lng, lat])
+        .setDOMContent(wrapper)
+        .addTo(map);
 }
 
-function normalizeCoords(coords) {
-    if (!Array.isArray(coords)) return [];
+// ==============================
+// HELPERS
+// ==============================
 
-    return coords
-        .map((c) => {
-            if (!Array.isArray(c) || c.length < 2) return null;
-
-            const a = Number(c[0]);
-            const b = Number(c[1]);
-
-            if (Number.isNaN(a) || Number.isNaN(b)) return null;
-
-            if (Math.abs(a) <= 90 && Math.abs(b) <= 180) return [b, a];
-            return [a, b];
-        })
-        .filter(Boolean);
-}
-
-function drawItineraryOnMap(itinerary) {
-    clearRouteLines();
-
-    const bounds = new maplibregl.LngLatBounds();
-    let hasCoords = false;
-
-    (itinerary.legs || []).forEach((leg, i) => {
-        const coords = getLegCoordinates(leg);
-        if (!coords.length) return;
-
-        const sourceId = `route-source-${i}`;
-        const layerId = `route-layer-${i}`;
-        const color = getLegColor(leg);
-        const isWalk = getLegMode(leg) === "WALK";
-
-        map.addSource(sourceId, {
-            type: "geojson",
-            data: {
-                type: "Feature",
-                geometry: {
-                    type: "LineString",
-                    coordinates: coords
-                },
-                properties: {
-                    mode: getLegMode(leg)
-                }
-            }
-        });
-
-        map.addLayer({
-            id: layerId,
-            type: "line",
-            source: sourceId,
-            layout: {
-                "line-cap": "round",
-                "line-join": "round"
-            },
-            paint: {
-                "line-color": color,
-                "line-width": isWalk ? 4 : 6,
-                "line-opacity": 0.95,
-                "line-dasharray": isWalk ? [2, 2] : [1, 0]
-            }
-        });
-
-        routeSourceIds.push(sourceId);
-        routeLayerIds.push(layerId);
-
-        coords.forEach((c) => {
-            bounds.extend(c);
-            hasCoords = true;
-        });
+function formatTime(iso) {
+    return new Date(iso).toLocaleTimeString([], {
+        hour: "numeric",
+        minute: "2-digit"
     });
-
-    document.getElementById("routeLegend").style.display = hasCoords ? "block" : "none";
-
-    if (hasCoords) {
-        map.fitBounds(bounds, { padding: 60, duration: 800 });
-    }
 }
 
-function getLegCoordinates(leg) {
-    if (typeof leg?.legGeometry?.points === "string") {
-        return decodePolyline(leg.legGeometry.points, 5);
-    }
-
-    if (typeof leg?.leg_geometry?.points === "string") {
-        return decodePolyline(leg.leg_geometry.points, 5);
-    }
-
-    if (typeof leg?.geometry?.points === "string") {
-        return decodePolyline(leg.geometry.points, 5);
-    }
-
-    if (Array.isArray(leg?.geometry?.coordinates)) {
-        return normalizeCoords(leg.geometry.coordinates);
-    }
-
-    if (Array.isArray(leg?.legGeometry?.coordinates)) {
-        return normalizeCoords(leg.legGeometry.coordinates);
-    }
-
-    if (Array.isArray(leg?.leg_geometry?.coordinates)) {
-        return normalizeCoords(leg.leg_geometry.coordinates);
-    }
-
-    const fromLon = leg?.from?.lon ?? leg?.from?.stop?.lon ?? leg?.from?.place?.lon;
-    const fromLat = leg?.from?.lat ?? leg?.from?.stop?.lat ?? leg?.from?.place?.lat;
-    const toLon = leg?.to?.lon ?? leg?.to?.stop?.lon ?? leg?.to?.place?.lon;
-    const toLat = leg?.to?.lat ?? leg?.to?.stop?.lat ?? leg?.to?.place?.lat;
-
-    if (fromLon != null && fromLat != null && toLon != null && toLat != null) {
-        return [
-            [Number(fromLon), Number(fromLat)],
-            [Number(toLon), Number(toLat)]
-        ];
-    }
-
-    return [];
+function minutes(seconds) {
+    return Math.round(seconds / 60);
 }
 
 function decodePolyline(str, precision = 5) {
-    let index = 0;
-    let lat = 0;
-    let lng = 0;
-    const coordinates = [];
+    let index = 0, lat = 0, lng = 0, coordinates = [];
     const factor = Math.pow(10, precision);
 
     while (index < str.length) {
-        let b;
-        let shift = 0;
-        let result = 0;
+        let result = 0, shift = 0, b;
 
         do {
             b = str.charCodeAt(index++) - 63;
@@ -524,11 +198,11 @@ function decodePolyline(str, precision = 5) {
             shift += 5;
         } while (b >= 0x20);
 
-        const dlat = (result & 1) ? ~(result >> 1) : (result >> 1);
-        lat += dlat;
+        const deltaLat = result & 1 ? ~(result >> 1) : result >> 1;
+        lat += deltaLat;
 
-        shift = 0;
         result = 0;
+        shift = 0;
 
         do {
             b = str.charCodeAt(index++) - 63;
@@ -536,8 +210,8 @@ function decodePolyline(str, precision = 5) {
             shift += 5;
         } while (b >= 0x20);
 
-        const dlng = (result & 1) ? ~(result >> 1) : (result >> 1);
-        lng += dlng;
+        const deltaLng = result & 1 ? ~(result >> 1) : result >> 1;
+        lng += deltaLng;
 
         coordinates.push([lng / factor, lat / factor]);
     }
@@ -545,407 +219,388 @@ function decodePolyline(str, precision = 5) {
     return coordinates;
 }
 
-function formatIsoOrOtpTime(value) {
-    if (!value) return "--:--";
+function getModeIcon(mode) {
+    const iconMap = {
+        REGIONAL_FAST_RAIL: "mdi-train",
+        BUS: "mdi-bus",
+        WALK: "mdi-walk",
+        TRAM: "mdi-tram",
+        SUBWAY: "mdi-subway",
+        BICYCLE: "mdi-bike"
+    };
 
-    const d = new Date(value);
-    if (!Number.isNaN(d.getTime())) {
-        return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-    }
-
-    return String(value);
+    return iconMap[mode] || "mdi-map-marker-path";
 }
 
-function formatTime(timeStr) {
-    if (!timeStr) return "--:--";
+function getLegColor(leg) {
+    return leg.routeColor ? `#${leg.routeColor}` : "#2563eb";
+}
 
-    if (String(timeStr).includes("T")) {
-        const d = new Date(timeStr);
-        if (!Number.isNaN(d.getTime())) {
-            return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+function escapeHtml(text) {
+    return String(text ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+}
+
+// ==============================
+// ROUTE ANIMATION
+// ==============================
+
+function animateLine(layerId) {
+    let opacity = 0;
+    const interval = setInterval(() => {
+        opacity += 0.08;
+        if (opacity >= 0.35) {
+            opacity = 0.35;
+            clearInterval(interval);
         }
-    }
 
-    const [h, m] = String(timeStr).split(":").map(Number);
-    const date = new Date();
-    date.setHours(h % 24, m, 0, 0);
-
-    return date.toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit"
-    });
-}
-
-function getMinutesAway(timeStr) {
-    if (!timeStr) return "--";
-
-    let dep;
-
-    if (String(timeStr).includes("T")) {
-        dep = new Date(timeStr);
-    } else {
-        const [h, m] = String(timeStr).split(":").map(Number);
-        dep = new Date();
-        dep.setHours(h % 24, m, 0, 0);
-        if (h >= 24) {
-            dep.setDate(dep.getDate() + Math.floor(h / 24));
-        }
-    }
-
-    const now = new Date();
-    return Math.max(0, Math.round((dep - now) / 60000));
-}
-
-async function getMetroAreas() {
-    const response = await fetch("/public/data/metro-areas.json");
-    const data = await response.json();
-    return data.metroAreas;
-}
-
-async function loadTransitStops() {
-    const res = await fetch("/api/transit/stops.geojson");
-    const geojson = await res.json();
-
-    allStops = geojson.features || [];
-
-    map.addSource("stops", {
-        type: "geojson",
-        data: geojson
-    });
-
-    map.addLayer({
-        id: "metro-stops-layer",
-        type: "circle",
-        source: "stops",
-        filter: ["==", ["get", "location_type"], 0],
-        paint: {
-            "circle-radius": 5,
-            "circle-color": "#ffffff",
-            "circle-stroke-color": "#111111",
-            "circle-stroke-width": 2
-        }
-    });
-}
-
-function addTransitLayers() {
-    if (map.getSource("transit-routes")) return;
-
-    map.addSource("transit-routes", {
-        type: "vector",
-        tiles: [
-            "https://transit.land/api/v2/tiles/routes/tiles/{z}/{x}/{y}.pbf?apikey=WOo9vL8ECMWN76EcKjsNGfo8YgNZ7c2u"
-        ],
-        minzoom: 0,
-        maxzoom: 14
-    });
-
-    map.addLayer({
-        id: "subway-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 1],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
-    });
-
-    map.addLayer({
-        id: "rail-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 2],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
-    });
-
-    map.addLayer({
-        id: "tram-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 0],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
-    });
-}
-
-function enableTransitPopups() {
-    map.on("mouseenter", "metro-stops-layer", () => {
-        map.getCanvas().style.cursor = "pointer";
-    });
-
-    map.on("mouseleave", "metro-stops-layer", () => {
-        map.getCanvas().style.cursor = "";
-    });
-
-    map.on("click", "metro-stops-layer", (e) => {
-        const f = e.features[0];
-        const coords = f.geometry.coordinates.slice();
-        const props = f.properties;
-
-        new maplibregl.Popup({
-            closeButton: true,
-            closeOnClick: true,
-            maxWidth: "320px",
-            className: "station-popup-wrap"
-        })
-            .setLngLat(coords)
-            .setHTML(`
-        <div class="station-popup">
-        <div class="station-popup__title">${props.stop_name || "Unknown stop"}</div>
-        <div class="station-popup__meta">Stop ID: ${props.stop_id || ""}</div>
-        <div class="station-popup__meta">Code: ${props.stop_code || "—"}</div>
-        <div class="station-popup__actions">
-        <button class="station-popup__btn station-popup__btn--ghost" onclick="viewDepartures('${props.stop_id}')">View Departures</button>
-        <button class="station-popup__btn station-popup__btn--primary" onclick="setOrigin('${props.stop_id}')">Set Origin</button>
-        <button class="station-popup__btn station-popup__btn--primary" onclick="setDestination('${props.stop_id}')">Set Destination</button>
-        </div>
-        </div>
-        `)
-            .addTo(map);
-    });
-}
-
-function switchMetro(city) {
-    const metro = metroAreas[city];
-    if (!metro) return;
-
-    map.flyTo({
-        center: metro.coords,
-        zoom: metro.zoom,
-        speed: 0.8
-    });
-}
-
-function searchStops(query) {
-    const q = query.trim().toLowerCase();
-    if (!q) return null;
-
-    return allStops.find((f) => {
-        const p = f.properties || {};
-        return (
-            (p.stop_name || "").toLowerCase().includes(q) ||
-            (p.stop_id || "").toLowerCase().includes(q) ||
-            (p.stop_code || "").toLowerCase().includes(q)
-        );
-    });
-}
-
-function goToSearchResult(feature) {
-    if (!feature) return;
-
-    const coords = feature.geometry.coordinates.slice();
-    const props = feature.properties || {};
-
-    map.flyTo({
-        center: coords,
-        zoom: 15,
-        speed: 0.9
-    });
-
-    if (searchMarker) searchMarker.remove();
-
-    searchMarker = new maplibregl.Marker()
-        .setLngLat(coords)
-        .addTo(map);
-
-    new maplibregl.Popup({
-        maxWidth: "320px",
-        className: "station-popup-wrap"
-    })
-        .setLngLat(coords)
-        .setHTML(`
-        <div class="station-popup">
-        <div class="station-popup__title">${props.stop_name || "Unknown stop"}</div>
-        <div class="station-popup__meta">Stop ID: ${props.stop_id || ""}</div>
-        <div class="station-popup__meta">Code: ${props.stop_code || "—"}</div>
-        <div class="station-popup__actions">
-        <button class="station-popup__btn station-popup__btn--ghost" onclick="viewDepartures('${props.stop_id}')">View Departures</button>
-        <button class="station-popup__btn station-popup__btn--primary" onclick="setOrigin('${props.stop_id}')">Set Origin</button>
-        <button class="station-popup__btn station-popup__btn--primary" onclick="setDestination('${props.stop_id}')">Set Destination</button>
-        </div>
-        </div>
-        `)
-        .addTo(map);
-}
-
-function toggleSidebar(forceState) {
-    const body = document.body;
-    sidebarCollapsed = typeof forceState === "boolean" ? forceState : !sidebarCollapsed;
-    body.classList.toggle("sidebar-collapsed", sidebarCollapsed);
-
-    setTimeout(() => {
-        if (map) map.resize();
-    }, 320);
-}
-
-function setBaseLayer(layerName) {
-    if (!baseStyles[layerName]) return;
-
-    map.setStyle(baseStyles[layerName]);
-
-    map.once("style.load", async () => {
-        addTransitLayers();
-        await reloadStopsLayer();
-        restoreTransitVisibility();
-        redrawCurrentRoute();
-    });
-
-    document.querySelectorAll(".layer-btn[data-layer]").forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.layer === layerName);
-    });
-}
-
-async function reloadStopsLayer() {
-    if (map.getLayer("metro-stops-layer")) map.removeLayer("metro-stops-layer");
-    if (map.getSource("stops")) map.removeSource("stops");
-    await loadTransitStops();
-    enableTransitPopups();
-}
-
-function restoreTransitVisibility() {
-    const visibility = transitVisible ? "visible" : "none";
-
-    ["subway-lines", "rail-lines", "tram-lines", "metro-stops-layer"].forEach((id) => {
-        if (map.getLayer(id)) {
-            map.setLayoutProperty(id, "visibility", visibility);
-        }
-    });
-}
-
-function toggleTransit() {
-    transitVisible = !transitVisible;
-    restoreTransitVisibility();
-    document.getElementById("transitToggle").classList.toggle("active", transitVisible);
-}
-
-function redrawCurrentRoute() {
-    const routeSegments = document.getElementById("routeSegments");
-    if (routeSegments && routeSegments.children.length) {
-        document.getElementById("getDirections").click();
-    }
-}
-
-function bindUI() {
-    document.getElementById("getDirections").addEventListener("click", getDirections);
-    document.getElementById("metroSelect").addEventListener("change", (e) => switchMetro(e.target.value));
-    document.getElementById("clearStart").addEventListener("click", clearOrigin);
-    document.getElementById("clearEnd").addEventListener("click", clearDestination);
-    document.getElementById("startPoint").addEventListener("input", updateClearButtons);
-    document.getElementById("endPoint").addEventListener("input", updateClearButtons);
-
-    document.getElementById("backToRoutes").addEventListener("click", () => {
-        document.getElementById("departuresSection").style.display = "none";
-        if (origin && destination) {
-            document.getElementById("fastestRoute").style.display = "block";
-            document.getElementById("alternatives").style.display = "block";
+        if (map.getLayer(layerId)) {
+            map.setPaintProperty(layerId, "line-opacity", opacity);
         } else {
-            document.getElementById("noRoute").style.display = "block";
+            clearInterval(interval);
         }
-    });
+    }, 30);
+}
 
-    const searchBox = document.getElementById("searchBox");
-    const clearSearch = document.getElementById("clearSearch");
+// ==============================
+// CLEAR ROUTES
+// ==============================
 
-    searchBox.addEventListener("input", () => {
-        clearSearch.style.display = searchBox.value ? "block" : "none";
-    });
-
-    searchBox.addEventListener("keydown", (e) => {
-        if (e.key !== "Enter") return;
-
-        const feature = searchStops(searchBox.value);
-        if (!feature) {
-            alert("No matching station found");
-            return;
-        }
-        goToSearchResult(feature);
-    });
-
-    clearSearch.addEventListener("click", () => {
-        searchBox.value = "";
-        clearSearch.style.display = "none";
-        if (searchMarker) {
-            searchMarker.remove();
-            searchMarker = null;
-        }
-    });
-
-    document.getElementById("menuBtn").addEventListener("click", () => toggleSidebar());
-
-    document.querySelectorAll(".layer-btn[data-layer]").forEach((btn) => {
-        btn.addEventListener("click", () => setBaseLayer(btn.dataset.layer));
-    });
-
-    document.getElementById("transitToggle").addEventListener("click", toggleTransit);
-
-    document.getElementById("zoomIn").addEventListener("click", () => map.zoomIn());
-    document.getElementById("zoomOut").addEventListener("click", () => map.zoomOut());
-
-    document.getElementById("myLocation").addEventListener("click", () => {
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                map.flyTo({
-                    center: [pos.coords.longitude, pos.coords.latitude],
-                    zoom: 14,
-                    speed: 0.9
-                });
-            },
-            () => alert("Could not get your location")
-        );
-    });
-
-    document.getElementById("toggle-stations").addEventListener("change", (e) => {
-        if (map.getLayer("metro-stops-layer")) {
-            map.setLayoutProperty("metro-stops-layer", "visibility", e.target.checked ? "visible" : "none");
-        }
-    });
-
-    document.getElementById("toggle-rail").addEventListener("change", (e) => {
-        const visibility = e.target.checked ? "visible" : "none";
-        ["subway-lines", "rail-lines", "tram-lines"].forEach((id) => {
-            if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", visibility);
+function clearRoutes() {
+    itineraryLayers.forEach(group => {
+        group.layers.forEach(id => {
+            if (map.getLayer(id)) map.removeLayer(id);
+            if (map.getSource(id)) map.removeSource(id);
         });
     });
 
-    document.getElementById("toggle-bikes").addEventListener("change", () => {
-        // placeholder for future bikes layer
+    if (map.getLayer("transfer-layer")) map.removeLayer("transfer-layer");
+    if (map.getSource(transferSourceId)) map.removeSource(transferSourceId);
+
+    itineraryLayers = [];
+}
+
+// ==============================
+// RENDER ROUTES
+// ==============================
+
+function renderAllItinerariesOnMap(itineraries) {
+    clearRoutes();
+
+    itineraries.forEach((itinerary, i) => {
+        const group = { index: i, layers: [] };
+
+        itinerary.legs.forEach((leg, j) => {
+            const encoded = leg.legGeometry?.points;
+            if (!encoded) return;
+
+            const coords = decodePolyline(encoded, leg.legGeometry?.precision ?? 5);
+
+            const sourceId = `route-${i}-${j}`;
+            const casingId = `route-casing-${i}-${j}`;
+            const layerId = `route-line-${i}-${j}`;
+
+            map.addSource(sourceId, {
+                type: "geojson",
+                data: {
+                    type: "Feature",
+                    geometry: {
+                        type: "LineString",
+                        coordinates: coords
+                    }
+                }
+            });
+
+            map.addLayer({
+                id: casingId,
+                type: "line",
+                source: sourceId,
+                paint: {
+                    "line-color": "#ffffff",
+                    "line-width": 8,
+                    "line-opacity": 0.35
+                }
+            });
+
+            map.addLayer({
+                id: layerId,
+                type: "line",
+                source: sourceId,
+                paint: {
+                    "line-color": getLegColor(leg),
+                    "line-width": 5,
+                    "line-opacity": 0,
+                    "line-dasharray": leg.mode === "WALK" ? [2, 2] : [1, 0]
+                }
+            });
+
+            animateLine(layerId);
+            group.layers.push(casingId, layerId, sourceId);
+        });
+
+        itineraryLayers.push(group);
     });
 }
 
-async function init() {
-    metroAreas = await getMetroAreas();
+// ==============================
+// HIGHLIGHT
+// ==============================
 
-    map = new maplibregl.Map({
-        container: "map",
-        style: baseStyles.terrain,
-        center: metroAreas.LA.coords,
-        zoom: metroAreas.LA.zoom
+function highlightItinerary(index, itineraries) {
+    selectedItineraryIndex = index;
+    const bounds = new maplibregl.LngLatBounds();
+    const transferPoints = [];
+
+    if (map.getLayer("transfer-layer")) map.removeLayer("transfer-layer");
+    if (map.getSource(transferSourceId)) map.removeSource(transferSourceId);
+
+    itineraryLayers.forEach((group, i) => {
+        const itinerary = itineraries[i];
+
+        itinerary.legs.forEach((leg, j) => {
+            const lineId = `route-line-${i}-${j}`;
+            const casingId = `route-casing-${i}-${j}`;
+
+            if (!map.getLayer(lineId) || !map.getLayer(casingId)) return;
+
+            if (i === index) {
+                map.setPaintProperty(lineId, "line-opacity", 1);
+                map.setPaintProperty(lineId, "line-width", 6);
+                map.setPaintProperty(casingId, "line-opacity", 0.9);
+                map.setPaintProperty(casingId, "line-width", 9);
+
+                const coords = decodePolyline(
+                    leg.legGeometry?.points,
+                    leg.legGeometry?.precision ?? 5
+                );
+
+                coords.forEach(c => bounds.extend(c));
+
+                if (j > 0 && leg.from?.lon != null && leg.from?.lat != null) {
+                    transferPoints.push({
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: [leg.from.lon, leg.from.lat]
+                        },
+                        properties: {
+                            name: leg.from.name || "Transfer"
+                        }
+                    });
+                }
+            } else {
+                map.setPaintProperty(lineId, "line-opacity", 0.18);
+                map.setPaintProperty(lineId, "line-width", 4);
+                map.setPaintProperty(casingId, "line-opacity", 0.15);
+                map.setPaintProperty(casingId, "line-width", 7);
+            }
+        });
     });
 
-    map.on("load", async () => {
-        addTransitLayers();
-        await loadTransitStops();
-        enableTransitPopups();
-        restoreTransitVisibility();
-    });
+    if (transferPoints.length) {
+        map.addSource(transferSourceId, {
+            type: "geojson",
+            data: {
+                type: "FeatureCollection",
+                features: transferPoints
+            }
+        });
 
-    bindUI();
-    updateClearButtons();
+        map.addLayer({
+            id: "transfer-layer",
+            type: "circle",
+            source: transferSourceId,
+            paint: {
+                "circle-radius": 6,
+                "circle-color": "#111111",
+                "circle-stroke-color": "#ffffff",
+                "circle-stroke-width": 2
+            }
+        });
+    }
 
-    if (window.innerWidth <= 900) {
-        toggleSidebar(true);
+    if (!bounds.isEmpty()) {
+        map.fitBounds(bounds, {
+            padding: 80,
+            duration: 600
+        });
     }
 }
 
-init();
+// ==============================
+// DETAIL HTML
+// ==============================
+
+function buildLegDetails(itinerary) {
+    return itinerary.legs.map(leg => {
+        const iconClass = getModeIcon(leg.mode);
+        const routeColor = getLegColor(leg);
+
+        const title = leg.routeShortName
+            ? `${escapeHtml(leg.routeShortName)} ${escapeHtml(leg.routeLongName || "")}`.trim()
+            : escapeHtml(leg.mode);
+
+        const fromName = escapeHtml(leg.from?.name || "");
+        const toName = escapeHtml(leg.to?.name || "");
+
+        const start = leg.startTime ? formatTime(leg.startTime) : "";
+        const end = leg.endTime ? formatTime(leg.endTime) : "";
+
+        const durationText = leg.duration ? `${minutes(leg.duration)} min` : "";
+
+        return `
+            <div class="detail-leg">
+                <span class="mdi ${iconClass}" style="color:${routeColor}"></span>
+                <div class="detail-leg-main">
+                    <div class="detail-leg-top">
+                        <span>${title || escapeHtml(leg.mode)}</span>
+                        <span>${start}${end ? ` — ${end}` : ""}</span>
+                    </div>
+                    <div class="detail-leg-sub">
+                        ${fromName}${toName ? ` → ${toName}` : ""}
+                        ${durationText ? ` · ${durationText}` : ""}
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+// ==============================
+// CARD RENDERING
+// ==============================
+
+function renderItineraries(data) {
+    const container = document.getElementById("itineraries");
+    container.innerHTML = "";
+
+    if (!data?.itineraries?.length) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <span class="mdi mdi-alert-circle-outline"></span>
+                <p>No trip results found.</p>
+            </div>
+        `;
+        clearRoutes();
+        return;
+    }
+
+    renderAllItinerariesOnMap(data.itineraries);
+
+    data.itineraries.forEach((itinerary, index) => {
+        const card = document.createElement("div");
+        card.className = "itinerary-card";
+
+        const fare = itinerary.fare?.fare?.cents != null
+            ? `$${(itinerary.fare.fare.cents / 100).toFixed(2)}`
+            : "Fare unavailable";
+
+        const previewIcons = itinerary.legs.map(leg => {
+            const iconClass = getModeIcon(leg.mode);
+            const routeColor = getLegColor(leg);
+
+            if (leg.routeShortName) {
+                return `
+                    <span class="preview-icon">
+                        <span class="mdi ${iconClass}" style="color:${routeColor}"></span>
+                        <span class="mini-pill" style="background:${routeColor}">
+                            ${escapeHtml(leg.routeShortName)}
+                        </span>
+                    </span>
+                `;
+            }
+
+            return `<span class="mdi ${iconClass}" style="color:${routeColor}"></span>`;
+        }).join(`<span class="preview-arrow">›</span>`);
+
+        card.innerHTML = `
+            <div class="summary-row">
+                <div>${formatTime(itinerary.startTime)} — ${formatTime(itinerary.endTime)}</div>
+                <div>${minutes(itinerary.duration)} min</div>
+            </div>
+            <div class="preview-row">${previewIcons}</div>
+            <div class="fare">${fare}</div>
+            <button class="details-btn" type="button">Details</button>
+            <div class="details-content">
+                ${buildLegDetails(itinerary)}
+            </div>
+        `;
+
+        card.addEventListener("click", () => {
+            document.querySelectorAll(".itinerary-card")
+                .forEach(c => c.classList.remove("active"));
+
+            card.classList.add("active");
+            highlightItinerary(index, data.itineraries);
+        });
+
+        card.querySelector(".details-btn").addEventListener("click", e => {
+            e.stopPropagation();
+            card.classList.toggle("expanded");
+        });
+
+        container.appendChild(card);
+    });
+
+    const firstCard = container.querySelector(".itinerary-card");
+    if (firstCard) {
+        firstCard.classList.add("active");
+        highlightItinerary(0, data.itineraries);
+    }
+}
+
+// ==============================
+// PLAN
+// ==============================
+
+async function planTrip() {
+    if (!originMarker || !destinationMarker) return;
+
+    const origin = originMarker.getLngLat();
+    const dest = destinationMarker.getLngLat();
+
+    const params = new URLSearchParams({
+        time: new Date().toISOString(),
+        fromPlace: `${origin.lat},${origin.lng}`,
+        toPlace: `${dest.lat},${dest.lng}`,
+        withFares: "true"
+    });
+
+    try {
+        const res = await fetch(
+            `https://api.transitous.org/api/v5/plan?${params.toString()}`
+        );
+
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}`);
+        }
+
+        const data = await res.json();
+        renderItineraries(data);
+    } catch (err) {
+        console.error("Plan trip failed:", err);
+
+        const container = document.getElementById("itineraries");
+        container.innerHTML = `
+            <div class="empty-state">
+                <span class="mdi mdi-alert"></span>
+                <p>Trip planning failed. Check console.</p>
+            </div>
+        `;
+    }
+}
+
+// ==============================
+// INIT
+// ==============================
+
+document.addEventListener("DOMContentLoaded", () => {
+    initMap();
+
+    document.getElementById("planBtn")
+        .addEventListener("click", planTrip);
+});
