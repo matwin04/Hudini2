@@ -1,57 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Transit Planner</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Transit Planner</title>
 
-    <link
-            href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css"
-            rel="stylesheet"
-    />
-    <script src="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.js"></script>
+        <link href="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.css" rel="stylesheet" />
+        <script src="https://unpkg.com/maplibre-gl@4.1.2/dist/maplibre-gl.js"></script>
 
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"
-    />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" />
 
-    <link rel="stylesheet" href="/public/styles/style.css"/>
-</head>
-<body>
-<div class="app-shell">
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <h1>Transit Planner</h1>
-            <p>Drag the green and red markers, then plan a trip</p>
-        </div>
-
-        <div class="search-card">
-            <button id="planBtn" class="plan-btn">
-                <span class="mdi mdi-map-marker-path"></span>
-                Plan Trip
-            </button>
-        </div>
-
-        <section class="results-section">
-            <div class="section-header">
-                <h2>Trip Results</h2>
-            </div>
-
-            <div id="itineraries" class="itineraries">
-                <div class="empty-state">
-                    <span class="mdi mdi-train"></span>
-                    <p>No trips loaded yet.</p>
+        <link rel="stylesheet" href="/public/styles/style.css" />
+    </head>
+    <body>
+        <div class="app-shell">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h1>Hudini</h1>
+                    <p>Transit Planner</p>
+                    <div>
+                        <button>Saved Trips</button>
+                        <button>Account</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </aside>
 
-    <main class="map-panel">
-        <div id="map"></div>
-    </main>
-</div>
+                <div class="search-card">
+                    <button id="planBtn" class="plan-btn">
+                        <span class="mdi mdi-map-marker-path"></span>
+                        Plan Trip
+                    </button>
+                </div>
 
-<script src="/public/scripts/map.js"></script>
-</body>
+                <section class="results-section">
+                    <div class="section-header">
+                        <h2>Trip Results</h2>
+                    </div>
+
+                    <div id="itineraries" class="itineraries">
+                        <div class="empty-state">
+                            <span class="mdi mdi-train"></span>
+                            <p>No trips loaded yet.</p>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="map-panel">
+                <div id="map"></div>
+            </main>
+        </div>
+
+        <script src="/public/scripts/map.js"></script>
+    </body>
 </html>

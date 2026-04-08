@@ -103,16 +103,15 @@ app.get("/api/transit/overview", async (req, res) => {
   }
   res.json(metro.masstransit);
 });
-app.get("/api/transit/stops.geojson", async (req, res) => {
+app.get("/api/stops.geojson", async (req, res) => {
   const { stop_id } = req.query;
   const stops = stop_id ? getStopsAsGeoJSON(stop_id) : getStopsAsGeoJSON();
   res.json(stops);
 });
-
-/*app.get("/api/bikes", (req, res) => {
-  const rows = db.prepare("SELECT * FROM bikeshare").all();
-  res.json(rows);
-});*/
+app.get("/api/shapes.geojson", async (req, res) => {
+  const shapes = await getShapesAsGeoJSON();
+  res.json(shapes);
+})
 app.get("/api/departures",async(req,res)=>{
   const {stopId}=req.query;
   const response = await fetch(

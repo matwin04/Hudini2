@@ -31,18 +31,75 @@ function initMap() {
                     tileSize: 256
                 }
             },
-            layers: [{
-                id: "carto-layer",
-                type: "raster",
-                source: "carto"
-            }]
+            layers: [
+                {
+                    id: "carto-layer",
+                    type: "raster",
+                    source: "carto"
+                }
+            ]
         },
         center: [-118.2437, 34.0522],
         zoom: 11
     });
-
     map.addControl(new maplibregl.NavigationControl());
-    map.on("load", initLocation);
+    map.on("load", () => {
+        initLocation();
+
+        addShapesLayer();
+        addStopsLayer();
+    });
+}
+function addTransitLayers() {
+    if (map.getSource("transit-routes")) return;
+
+    map.addSource("transit-routes", {
+        type: "vector",
+        tiles: [
+            "https://transit.land/api/v2/tiles/routes/tiles/{z}/{x}/{y}.pbf?apikey=WOo9vL8ECMWN76EcKjsNGfo8YgNZ7c2u"
+        ],
+        minzoom: 0,
+        maxzoom: 14
+    });
+
+    map.addLayer({
+        id: "subway-lines",
+        type: "line",
+        source: "transit-routes",
+        "source-layer": "routes",
+        filter: ["==", ["get", "route_type"], 1],
+        paint: {
+            "line-color": ["get", "route_color"],
+            "line-width": 3,
+            "line-opacity": 0.9
+        }
+    });
+
+    map.addLayer({
+        id: "rail-lines",
+        type: "line",
+        source: "transit-routes",
+        "source-layer": "routes",
+        filter: ["==", ["get", "route_type"], 2],
+        paint: {
+            "line-color": ["get", "route_color"],
+            "line-width": 3,
+            "line-opacity": 0.9
+        }
+    });
+
+    map.addLayer({
+        id: "tram-lines",
+        type: "line",
+        source: "transit-routes",
+        "source-layer": "routes",
+        filter: ["==", ["get", "route_type"], 0],
+        paint: {
+            "line-color": ["get", "route_color"],
+            "line-width": 3,
+            "line-opacity": 0.9
+        }
+    });
 }
 
 // ==============================
@@ -52,23 +109,20 @@ function initMap() {
 function initLocation() {
     if (!navigator.geolocation) return fallbackLocation();
 
-    navigator.geolocation.getCurrentPosition(
-        pos => {
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
+    navigator.geolocation.getCurrentPosition((pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
 
-            map.flyTo({ center: [lng, lat], zoom: 13 });
+        map.flyTo({ center: [lng, lat], zoom: 13 });
 
-            // default origin = current location
-            setOriginMarker(lng, lat);
+        // default origin = current location
+        setOriginMarker(lng, lat);
 
-            // default destination nearby so planTrip can still work immediately
-            setDestinationMarker(lng + 0.02, lat + 0.02);
+        // default destination nearby so planTrip can still work immediately
+        setDestinationMarker(lng + 0.02, lat + 0.02);
 
-            enableMapClickSelector();
-        },
-        fallbackLocation
-    );
+        enableMapClickSelector();
+    }, fallbackLocation);
 }
 
 function fallbackLocation() {
@@ -186,11 +240,16 @@ function minutes(seconds) {
 }
 
 function decodePolyline(str, precision = 5) {
-    let index = 0, lat = 0, lng = 0, coordinates = [];
+    let index = 0,
+        lat = 0,
+        lng = 0,
+        coordinates = [];
     const factor = Math.pow(10, precision);
 
     while (index < str.length) {
-        let result = 0, shift = 0, b;
+        let result = 0,
+            shift = 0,
+            b;
 
         do {
             b = str.charCodeAt(index++) - 63;
@@ -222,6 +281,7 @@ function decodePolyline(str, precision = 5) {
 function getModeIcon(mode) {
     const iconMap = {
         REGIONAL_FAST_RAIL: "mdi-train",
+        REGIONAL_RAIL: "mdi-train",
         BUS: "mdi-bus",
         WALK: "mdi-walk",
         TRAM: "mdi-tram",
@@ -271,8 +331,8 @@ function animateLine(layerId) {
 // ==============================
 
 function clearRoutes() {
-    itineraryLayers.forEach(group => {
-        group.layers.forEach(id => {
+    itineraryLayers.forEach((group) => {
+        group.layers.forEach((id) => {
             if (map.getLayer(id)) map.removeLayer(id);
             if (map.getSource(id)) map.removeSource(id);
         });
@@ -373,12 +433,9 @@ function highlightItinerary(index, itineraries) {
                 map.setPaintProperty(casingId, "line-opacity", 0.9);
                 map.setPaintProperty(casingId, "line-width", 9);
 
-                const coords = decodePolyline(
-                    leg.legGeometry?.points,
-                    leg.legGeometry?.precision ?? 5
-                );
+                const coords = decodePolyline(leg.legGeometry?.points, leg.legGeometry?.precision ?? 5);
 
-                coords.forEach(c => bounds.extend(c));
+                coords.forEach((c) => bounds.extend(c));
 
                 if (j > 0 && leg.from?.lon != null && leg.from?.lat != null) {
                     transferPoints.push({
@@ -436,40 +493,155 @@ function highlightItinerary(index, itineraries) {
 // ==============================
 
 function buildLegDetails(itinerary) {
-    return itinerary.legs.map(leg => {
+    const container = document.createElement("div");
+
+    itinerary.legs.forEach((leg) => {
         const iconClass = getModeIcon(leg.mode);
         const routeColor = getLegColor(leg);
+        const agencyLogo = getAgencyLogo(leg.agencyId);
 
-        const title = leg.routeShortName
-            ? `${escapeHtml(leg.routeShortName)} ${escapeHtml(leg.routeLongName || "")}`.trim()
-            : escapeHtml(leg.mode);
+        const wrapper = document.createElement("div");
+        wrapper.className = "detail-leg";
 
-        const fromName = escapeHtml(leg.from?.name || "");
-        const toName = escapeHtml(leg.to?.name || "");
+        // ======================
+        // ICON
+        // ======================
+        const icon = document.createElement("span");
+        icon.className = `mdi ${iconClass}`;
+        icon.style.color = routeColor;
+
+        // ======================
+        // MAIN
+        // ======================
+        const main = document.createElement("div");
+        main.className = "detail-leg-main";
+
+        // ======================
+        // TOP ROW (route + time)
+        // ======================
+        const top = document.createElement("div");
+        top.className = "detail-leg-top";
+
+        const title = document.createElement("span");
+        title.className = "detail-route";
+
+        if (leg.routeShortName) {
+            title.textContent = `${leg.routeShortName} ${leg.routeLongName || ""}`.trim();
+        } else {
+            title.textContent = leg.mode;
+        }
+
+        const time = document.createElement("span");
+        time.className = "detail-time";
 
         const start = leg.startTime ? formatTime(leg.startTime) : "";
         const end = leg.endTime ? formatTime(leg.endTime) : "";
+        time.textContent = start + (end ? ` — ${end}` : "");
 
-        const durationText = leg.duration ? `${minutes(leg.duration)} min` : "";
+        top.appendChild(title);
+        top.appendChild(time);
 
-        return `
-            <div class="detail-leg">
-                <span class="mdi ${iconClass}" style="color:${routeColor}"></span>
-                <div class="detail-leg-main">
-                    <div class="detail-leg-top">
-                        <span>${title || escapeHtml(leg.mode)}</span>
-                        <span>${start}${end ? ` — ${end}` : ""}</span>
-                    </div>
-                    <div class="detail-leg-sub">
-                        ${fromName}${toName ? ` → ${toName}` : ""}
-                        ${durationText ? ` · ${durationText}` : ""}
-                    </div>
-                </div>
-            </div>
-        `;
-    }).join("");
+        // ======================
+        // HEADSIGN (THIS IS NEW 🔥)
+        // ======================
+        if (leg.headsign) {
+            const headsign = document.createElement("div");
+            headsign.className = "detail-headsign";
+            headsign.textContent = `→ ${leg.headsign}`;
+            main.appendChild(headsign);
+        }
+
+        // ======================
+        // FROM → TO
+        // ======================
+        const sub = document.createElement("div");
+
+        sub.className = "detail-leg-sub";
+
+        const from = leg.from?.name || "";
+        const to = leg.to?.name || "";
+        const duration = leg.duration ? `${minutes(leg.duration)} min` : "";
+
+        sub.textContent = `${from} → ${to}${duration ? ` • ${duration}` : ""}`;
+
+        // ======================
+        // AGENCY ROW (NEW 🔥)
+        // ======================
+        const agencyRow = document.createElement("div");
+        agencyRow.className = "detail-agency";
+
+        if (agencyLogo) {
+            const img = document.createElement("img");
+            img.src = agencyLogo;
+            img.className = "agency-logo";
+            agencyRow.appendChild(img);
+        }
+
+        if (leg.agencyName) {
+            const agencyText = document.createElement("span");
+            agencyText.textContent = leg.agencyName;
+            agencyRow.appendChild(agencyText);
+        }
+        const stopCount = leg.intermediateStops?.length || 0;
+
+        if (stopCount > 0) {
+            const stopsSummary = document.createElement("div");
+            stopsSummary.className = "detail-stops-summary";
+            stopsSummary.textContent = `${stopCount} stops`;
+
+            main.appendChild(stopsSummary);
+        }
+        if (stopCount > 0) {
+            const toggleBtn = document.createElement("button");
+            toggleBtn.className = "stops-toggle";
+            toggleBtn.textContent = "Show stops";
+
+            const stopsList = document.createElement("div");
+            stopsList.className = "stops-list";
+
+            leg.intermediateStops.forEach((stop) => {
+                const item = document.createElement("div");
+                item.className = "stop-item";
+
+                const name = document.createElement("span");
+                name.textContent = stop.name;
+
+                const time = document.createElement("span");
+                time.className = "stop-time";
+                time.textContent = stop.arrival ? formatTime(stop.arrival) : "";
+
+                item.appendChild(name);
+                item.appendChild(time);
+                stopsList.appendChild(item);
+            });
+
+            toggleBtn.addEventListener("click", () => {
+                const isOpen = stopsList.classList.toggle("open");
+                toggleBtn.textContent = isOpen ? "Hide stops" : "Show stops";
+            });
+
+            main.appendChild(toggleBtn);
+            main.appendChild(stopsList);
+        }
+        // ======================
+        // ASSEMBLE
+        // ======================
+        main.appendChild(top);
+        main.appendChild(sub);
+        main.appendChild(agencyRow);
+
+        wrapper.appendChild(icon);
+        wrapper.appendChild(main);
+
+        container.appendChild(wrapper);
+    });
+
+    return container;
 }
-
+function getAgencyLogo(agencyId) {
+    if (!agencyId) return null;
+    return `/public/icons/agency_logos/${agencyId}.png`;
+}
 // ==============================
 // CARD RENDERING
 // ==============================
@@ -495,16 +667,18 @@ function renderItineraries(data) {
         const card = document.createElement("div");
         card.className = "itinerary-card";
 
-        const fare = itinerary.fare?.fare?.cents != null
-            ? `$${(itinerary.fare.fare.cents / 100).toFixed(2)}`
-            : "Fare unavailable";
+        const fare =
+            itinerary.fare?.fare?.cents != null
+                ? `$${(itinerary.fare.fare.cents / 100).toFixed(2)}`
+                : "Fare unavailable";
 
-        const previewIcons = itinerary.legs.map(leg => {
-            const iconClass = getModeIcon(leg.mode);
-            const routeColor = getLegColor(leg);
+        const previewIcons = itinerary.legs
+            .map((leg) => {
+                const iconClass = getModeIcon(leg.mode);
+                const routeColor = getLegColor(leg);
 
-            if (leg.routeShortName) {
-                return `
+                if (leg.routeShortName) {
+                    return `
                     <span class="preview-icon">
                         <span class="mdi ${iconClass}" style="color:${routeColor}"></span>
                         <span class="mini-pill" style="background:${routeColor}">
@@ -512,10 +686,11 @@ function renderItineraries(data) {
                         </span>
                     </span>
                 `;
-            }
+                }
 
-            return `<span class="mdi ${iconClass}" style="color:${routeColor}"></span>`;
-        }).join(`<span class="preview-arrow">›</span>`);
+                return `<span class="mdi ${iconClass}" style="color:${routeColor}"></span>`;
+            })
+            .join(`<span class="preview-arrow">›</span>`);
 
         card.innerHTML = `
             <div class="summary-row">
@@ -525,20 +700,22 @@ function renderItineraries(data) {
             <div class="preview-row">${previewIcons}</div>
             <div class="fare">${fare}</div>
             <button class="details-btn" type="button">Details</button>
-            <div class="details-content">
-                ${buildLegDetails(itinerary)}
-            </div>
-        `;
+            <button class="save-btn" type="button">Save Trip</button>
+            <div class="details-content"></div>
+          `;
 
+        // ✅ THIS WAS MISSING
+        const detailsContainer = card.querySelector(".details-content");
+        const detailsElement = buildLegDetails(itinerary);
+        detailsContainer.appendChild(detailsElement);
         card.addEventListener("click", () => {
-            document.querySelectorAll(".itinerary-card")
-                .forEach(c => c.classList.remove("active"));
+            document.querySelectorAll(".itinerary-card").forEach((c) => c.classList.remove("active"));
 
             card.classList.add("active");
             highlightItinerary(index, data.itineraries);
         });
 
-        card.querySelector(".details-btn").addEventListener("click", e => {
+        card.querySelector(".details-btn").addEventListener("click", (e) => {
             e.stopPropagation();
             card.classList.toggle("expanded");
         });
@@ -571,9 +748,7 @@ async function planTrip() {
     });
 
     try {
-        const res = await fetch(
-            `https://api.transitous.org/api/v5/plan?${params.toString()}`
-        );
+        const res = await fetch(`https://api.transitous.org/api/v5/plan?${params.toString()}`);
 
         if (!res.ok) {
             throw new Error(`HTTP ${res.status}`);
@@ -598,9 +773,71 @@ async function planTrip() {
 // INIT
 // ==============================
 
+function saveTrip() {
+    console.log("SAVING TRIP");
+}
+function addShapesLayer() {
+    // avoid duplicate loads
+    if (map.getSource("shapes")) return;
+
+    map.addSource("shapes", {
+        type: "geojson",
+        data: "/api/shapes.geojson"
+    });
+
+    // white casing (like your routes)
+    map.addLayer({
+        id: "shapes-casing",
+        type: "line",
+        source: "shapes",
+        paint: {
+            "line-color": "#ffffff",
+            "line-width": 6,
+            "line-opacity": 0.7
+        }
+    });
+
+    // main colored line
+    map.addLayer({
+        id: "shapes-line",
+        type: "line",
+        source: "shapes",
+        paint: {
+            "line-color": [
+                "case",
+                ["has", "route_color"],
+                ["concat", "#", ["get", "route_color"]],
+                "#2563eb"
+            ],
+            "line-width": 3,
+            "line-opacity": 0.9
+        }
+    });
+}
+function addStopsLayer() {
+    // avoid duplicate loads
+    if (map.getSource("stops")) return;
+
+    map.addSource("stops", {
+        type: "geojson",
+        data: "/api/stops.geojson"
+    });
+    map.addLayer({
+        id: "stops-layer",
+        type: "circle",
+        source: "stops",
+        filter: ["==", ["get", "location_type"], 0],
+        paint: {
+            "circle-radius": 5,
+            "circle-color": "#ffffff",
+            "circle-stroke-color": "#111111",
+            "circle-stroke-width": 2
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initMap();
-
-    document.getElementById("planBtn")
-        .addEventListener("click", planTrip);
+   // document.getElementById("saveBtn").addEventListener("click", saveTrip);
+    document.getElementById("planBtn").addEventListener("click", planTrip);
 });
