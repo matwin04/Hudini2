@@ -70,48 +70,19 @@ app.get("/api/test", (req, res) => {
   res.render("map");
 });
 // metro areas from DB
-/*app.get("/api/areas/db", (req, res) => {
-  const rows = db.prepare("SELECT * FROM cities").all();
-  res.json(rows);
-});*/
 
-// metro areas from JSON
-app.get("/api/areas/json", async (req, res) => {
-  const data = await fs.readFile("./public/data/metro-areas.json", "utf8");
-  res.json(JSON.parse(data));
-});
-app.get("/api/bikes/:city", async (req, res) => {
-  const city = req.params.city;
 
-  const data = JSON.parse(await fs.readFile("./data/metro-areas.json", "utf8"));
-
-  const metro = data.metroAreas[city];
-
-  if (!metro || !metro.micromobility) {
-    return res.json([]);
-  }
-
-  res.json(metro.micromobility);
-});
-
-app.get("/api/transit/overview", async (req, res) => {
-  const city = req.params.city;
-  const data = JSON.parse(await fs.readFile("./public/data/metro-areas.json", "utf8"));
-  const metro = data.metroAreas[city];
-  if (!metro || !metro.masstransit) {
-    return res.json({});
-  }
-  res.json(metro.masstransit);
-});
 app.get("/api/stops.geojson", async (req, res) => {
   const { stop_id } = req.query;
   const stops = stop_id ? getStopsAsGeoJSON(stop_id) : getStopsAsGeoJSON();
   res.json(stops);
 });
-app.get("/api/shapes.geojson", async (req, res) => {
-  const shapes = await getShapesAsGeoJSON();
-  res.json(shapes);
-})
+app.get("/api/all.geojson", async (req, res) => {
+  const { agencyKey } = req.query;
+  const stops = stop_id ? getStopsAsGeoJSON(stop_id) : getStopsAsGeoJSON();
+  res.json(stops);
+});
+
 app.get("/api/departures",async(req,res)=>{
   const {stopId}=req.query;
   const response = await fetch(

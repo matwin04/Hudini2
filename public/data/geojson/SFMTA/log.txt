@@ -1,0 +1,8 @@
+Feed Version: Unknown
+GTFS-to-geoJSON Version: 3.8.4
+Date Generated: Wed Apr 08 2026 20:09:12 GMT-0700 (Pacific Daylight Time)
+Route Count: 0
+Shape Count: 0
+GeoJSON File Count: 1
+Output Type: agency
+Source: https://muni-gtfs.apps.sfmta.com/data/muni_gtfs-current.zip

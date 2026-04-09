@@ -45,62 +45,75 @@ function initMap() {
     map.addControl(new maplibregl.NavigationControl());
     map.on("load", () => {
         initLocation();
-
+        enableTransitPopups();
         addShapesLayer();
         addStopsLayer();
     });
 }
-function addTransitLayers() {
-    if (map.getSource("transit-routes")) return;
 
-    map.addSource("transit-routes", {
-        type: "vector",
-        tiles: [
-            "https://transit.land/api/v2/tiles/routes/tiles/{z}/{x}/{y}.pbf?apikey=WOo9vL8ECMWN76EcKjsNGfo8YgNZ7c2u"
-        ],
-        minzoom: 0,
-        maxzoom: 14
+function enableTransitPopups() {
+    map.on("mouseenter", "stops-layer", () => {
+        map.getCanvas().style.cursor = "pointer";
     });
 
-    map.addLayer({
-        id: "subway-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 1],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
+    map.on("mouseleave", "stops-layer", () => {
+        map.getCanvas().style.cursor = "";
     });
 
-    map.addLayer({
-        id: "rail-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 2],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
-    });
+    map.on("click", "stops-layer", (e) => {
+        const f = e.features[0];
+        const coords = f.geometry.coordinates.slice();
+        const props = f.properties;
 
-    map.addLayer({
-        id: "tram-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 0],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
+        const popup = new maplibregl.Popup({
+            closeButton: true,
+            closeOnClick: true,
+            maxWidth: "320px",
+            className: "station-popup-wrap"
+        });
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "station-popup";
+
+        wrapper.innerHTML = `
+    <div class="station-popup__title">${props.stop_name || "Unknown stop"}</div>
+    <div class="station-popup__meta">Stop ID: ${props.stop_id || ""}</div>
+    <div class="station-popup__meta">Code: ${props.stop_code || "—"}</div>
+`;
+
+        const actions = document.createElement("div");
+        actions.className = "station-popup__actions";
+
+// ORIGIN BUTTON
+        const originBtn = document.createElement("button");
+        originBtn.className = "station-popup__btn station-popup__btn--primary";
+        originBtn.textContent = "Set Origin";
+
+        originBtn.addEventListener("click", () => {
+            const [lng, lat] = coords;
+            setOriginMarker(lng, lat);
+            popup.remove();
+        });
+
+// DEST BUTTON
+        const destBtn = document.createElement("button");
+        destBtn.className = "station-popup__btn station-popup__btn--primary";
+        destBtn.textContent = "Set Destination";
+
+        destBtn.addEventListener("click", () => {
+            const [lng, lat] = coords;
+            setDestinationMarker(lng, lat);
+            popup.remove();
+        });
+
+        actions.appendChild(originBtn);
+        actions.appendChild(destBtn);
+        wrapper.appendChild(actions);
+
+        popup.setLngLat(coords).setDOMContent(wrapper).addTo(map);
     });
 }
+
 
 // ==============================
 // LOCATION
@@ -547,7 +560,7 @@ function buildLegDetails(itinerary) {
         if (leg.headsign) {
             const headsign = document.createElement("div");
             headsign.className = "detail-headsign";
-            headsign.textContent = `→ ${leg.headsign}`;
+            headsign.innerHTML = `For <b>${leg.headsign}</b>`;
             main.appendChild(headsign);
         }
 
@@ -562,7 +575,7 @@ function buildLegDetails(itinerary) {
         const to = leg.to?.name || "";
         const duration = leg.duration ? `${minutes(leg.duration)} min` : "";
 
-        sub.textContent = `${from} → ${to}${duration ? ` • ${duration}` : ""}`;
+        sub.innerHTML = `<b>${from}</b> to <b>${to}</b>${duration ? ` • ${duration}` : ""}`;
 
         // ======================
         // AGENCY ROW (NEW 🔥)
@@ -803,12 +816,7 @@ function addShapesLayer() {
         type: "line",
         source: "shapes",
         paint: {
-            "line-color": [
-                "case",
-                ["has", "route_color"],
-                ["concat", "#", ["get", "route_color"]],
-                "#2563eb"
-            ],
+            "line-color": ["get", "route_color"],
             "line-width": 3,
             "line-opacity": 0.9
         }
@@ -828,7 +836,7 @@ function addStopsLayer() {
         source: "stops",
         filter: ["==", ["get", "location_type"], 0],
         paint: {
-            "circle-radius": 5,
+            "circle-radius": 2,
             "circle-color": "#ffffff",
             "circle-stroke-color": "#111111",
             "circle-stroke-width": 2

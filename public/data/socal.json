@@ -1,10 +1,29 @@
 {
-  "sqlitePath": "./public/data/gtfs.db",
   "agencies": [
     {
-      "prefix": "BORT",
+      "agencyKey": "SFMTA",
+      "url": "https://muni-gtfs.apps.sfmta.com/data/muni_gtfs-current.zip"
+    },
+    {
+      "agencyKey": "ACT",
+      "url": "https://api.actransit.org/transit/gtfs/download?token=2512B81107A09D2DC44895CDDC650D47"
+    },
+    {
+      "agencyKey": "VTA",
+      "url": "https://gtfs.vta.org/gtfs_vta.zip"
+    },
+    {
+      "agencyKey": "CALT",
+      "url": "https://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip"
+    },
+    {
+      "agencyKey": "BORT",
       "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
       "exclude": ["rider_categories"]
+    },
+    {
+      "agencyKey": "OCTA",
+      "url": "https://www.octa.net/current/google_transit.zip"
     },
     {
       "url": "https://gitlab.com/LACMTA/gtfs_rail/raw/master/gtfs_rail.zip",
@@ -20,10 +39,10 @@
           "Authorization": "be6c2a5933d80f7704d2eac5906065c9"
         }
       },
-      "prefix": "us-ca-Metro-LosAngeles-Rail_"
+      "agencyKey": "LACMTA"
     },
     {
-      "prefix": "us-ca-Metrolink_",
+      "agencyKey": "SCAX",
       "url": "https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip",
       "realtimeAlerts": {
         "url": "https://metrolink-gtfsrt.gbsdigital.us/feed/gtfsrt-alerts",
@@ -43,7 +62,12 @@
           "X-Api-Key": "gMpUXrGPJJ8X9Pp2OivQC1czi046utCMabRM3XQg"
         }
       }
+    },
+    {
+      "agencyKey": "FOOT",
+      "url": "https://foothilltransit.rideralerts.com/myStop/GTFS-Zip.ashx"
     }
   ],
-  "ignoreDuplicates": true
+  "ignoreDuplicates": true,
+  "outputFormat": "lines-and-stops"
 }
