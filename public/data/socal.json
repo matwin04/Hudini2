@@ -1,8 +1,20 @@
 {
   "agencies": [
     {
+      "url": "https://drive.google.com/uc?export=download&id=1869EVa1z6m_iD6QmvRXyTHtYiaSUBROl",
+      "agencyKey": "LBT"
+    },
+    {
+      "url": "https://gitlab.com/LACMTA/gtfs_bus/raw/master/gtfs_bus.zip",
+      "agencyKey": "LACMTA"
+    },
+    {
       "agencyKey": "SFMTA",
       "url": "https://muni-gtfs.apps.sfmta.com/data/muni_gtfs-current.zip"
+    },
+    {
+      "agencyKey":"COW",
+      "url":"https://passio3.com/cerritos/passioTransit/gtfs/google_transit.zip"
     },
     {
       "agencyKey": "ACT",
@@ -19,7 +31,9 @@
     {
       "agencyKey": "BORT",
       "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
-      "exclude": ["rider_categories"]
+      "exclude": [
+        "rider_categories"
+      ]
     },
     {
       "agencyKey": "OCTA",
@@ -66,8 +80,23 @@
     {
       "agencyKey": "FOOT",
       "url": "https://foothilltransit.rideralerts.com/myStop/GTFS-Zip.ashx"
+    },
+    {
+      "agencyKey": "RTA",
+      "url": "https://www.riversidetransit.com/google_transit.zip"
+    },
+    {
+      "agencyKey":"NTS",
+      "url":"https://nts.rideralerts.com/InfoPoint/gtfs-zip.ashx"
+    },{
+      "agencyKey":"LAGO",
+      "url":"https://data.trilliumtransit.com/gtfs/dpwlacounty-ca-us/dpwlacounty-ca-us.zip"
+    },{
+      "agencyKey":"ICON",
+      "url":"https://passio3.com/irvine/passioTransit/gtfs/google_transit.zip"
     }
   ],
   "ignoreDuplicates": true,
-  "outputFormat": "lines-and-stops"
+  "outputFormat": "stops",
+  "skipImport": false
 }

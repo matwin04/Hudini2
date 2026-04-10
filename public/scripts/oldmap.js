@@ -627,57 +627,6 @@ async function loadTransitStops() {
     });
 }
 
-function addTransitLayers() {
-    if (oldmap.getSource("transit-routes")) return;
-
-    oldmap.addSource("transit-routes", {
-        type: "vector",
-        tiles: [
-            "https://transit.land/api/v2/tiles/routes/tiles/{z}/{x}/{y}.pbf?apikey=WOo9vL8ECMWN76EcKjsNGfo8YgNZ7c2u"
-        ],
-        minzoom: 0,
-        maxzoom: 14
-    });
-
-    oldmap.addLayer({
-        id: "subway-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 1],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
-    });
-
-    oldmap.addLayer({
-        id: "rail-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 2],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
-    });
-
-    oldmap.addLayer({
-        id: "tram-lines",
-        type: "line",
-        source: "transit-routes",
-        "source-layer": "routes",
-        filter: ["==", ["get", "route_type"], 0],
-        paint: {
-            "line-color": ["get", "route_color"],
-            "line-width": 3,
-            "line-opacity": 0.9
-        }
-    });
-}
 
 function enableTransitPopups() {
     oldmap.on("mouseenter", "metro-stops-layer", () => {

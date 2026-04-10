@@ -15,6 +15,7 @@ let transferSourceId = "transfer-points";
 // MAP INIT
 // ==============================
 
+
 function initMap() {
     map = new maplibregl.Map({
         container: "map",
@@ -43,51 +44,39 @@ function initMap() {
         zoom: 11
     });
     map.addControl(new maplibregl.NavigationControl());
+    let stopsTimeout;
+
     map.on("load", () => {
         initLocation();
         enableTransitPopups();
-        addShapesLayer();
-        addStopsLayer();
+        addTransitLayers();
+        addTransitStopsLayer();
     });
 }
-
 function enableTransitPopups() {
-    map.on("mouseenter", "stops-layer", () => {
+    map.on("mouseenter", "all-stops", () => {
         map.getCanvas().style.cursor = "pointer";
     });
 
-    map.on("mouseleave", "stops-layer", () => {
+    map.on("mouseleave", "all-stopss", () => {
         map.getCanvas().style.cursor = "";
     });
-
-    map.on("click", "stops-layer", (e) => {
+    map.on("click", "all-stops", (e) => {
         const f = e.features[0];
-        const coords = f.geometry.coordinates.slice();
+        const coords = f.geometry.coordinates;
         const props = f.properties;
 
-        const popup = new maplibregl.Popup({
-            closeButton: true,
-            closeOnClick: true,
-            maxWidth: "320px",
-            className: "station-popup-wrap"
-        });
+        const popup = new maplibregl.Popup();
 
         const wrapper = document.createElement("div");
-        wrapper.className = "station-popup";
 
         wrapper.innerHTML = `
-    <div class="station-popup__title">${props.stop_name || "Unknown stop"}</div>
-    <div class="station-popup__meta">Stop ID: ${props.stop_id || ""}</div>
-    <div class="station-popup__meta">Code: ${props.stop_code || "—"}</div>
-`;
+        <b>${props.name || props.stop_name || "Stop"}</b><br/>
+        ${props.id || props.stop_id || ""}<br/>
+    `;
 
-        const actions = document.createElement("div");
-        actions.className = "station-popup__actions";
-
-// ORIGIN BUTTON
         const originBtn = document.createElement("button");
-        originBtn.className = "station-popup__btn station-popup__btn--primary";
-        originBtn.textContent = "Set Origin";
+        originBtn.textContent = "Set As Origin";
 
         originBtn.addEventListener("click", () => {
             const [lng, lat] = coords;
@@ -95,10 +84,8 @@ function enableTransitPopups() {
             popup.remove();
         });
 
-// DEST BUTTON
         const destBtn = document.createElement("button");
-        destBtn.className = "station-popup__btn station-popup__btn--primary";
-        destBtn.textContent = "Set Destination";
+        destBtn.textContent = "Set As Destination";
 
         destBtn.addEventListener("click", () => {
             const [lng, lat] = coords;
@@ -106,12 +93,12 @@ function enableTransitPopups() {
             popup.remove();
         });
 
-        actions.appendChild(originBtn);
-        actions.appendChild(destBtn);
-        wrapper.appendChild(actions);
+        wrapper.appendChild(originBtn);
+        wrapper.appendChild(destBtn);
 
         popup.setLngLat(coords).setDOMContent(wrapper).addTo(map);
     });
+
 }
 
 
@@ -182,13 +169,56 @@ function setDestinationMarker(lng, lat) {
 
 function enableMapClickSelector() {
     map.on("click", (e) => {
+        // 🔥 check if click hit a stop feature
+        const features = map.queryRenderedFeatures(e.point, {
+            layers: ["all-stops", "nearby-stops-layer"] // add any stop layers here
+        });
+
+        // if clicking a station → do nothing (let station popup handle it)
+        if (features.length > 0) return;
+
         const lng = e.lngLat.lng;
         const lat = e.lngLat.lat;
 
         showPointChooser(lng, lat);
     });
 }
+async function loadApiStops() {
+    const bounds = map.getBounds();
 
+    const min = `${bounds.getSouth()},${bounds.getWest()}`;
+    const max = `${bounds.getNorth()},${bounds.getEast()}`;
+
+    try {
+        const res = await fetch(`/api/stops?min=${min}&max=${max}`);
+        const geojson = await res.json();
+
+        if (map.getSource("api-stops")) {
+            map.getSource("api-stops").setData(geojson);
+            return;
+        }
+
+        map.addSource("api-stops", {
+            type: "geojson",
+            data: geojson
+        });
+
+        map.addLayer({
+            id: "all-stops",
+            type: "circle",
+            source: "api-stops",
+            paint: {
+                "circle-radius": 5,
+                "circle-color": "#0072BC",
+                "circle-stroke-color": "#ffffff",
+                "circle-stroke-width": 1
+            }
+        });
+
+    } catch (err) {
+        console.error("API stops failed:", err);
+    }
+}
 function showPointChooser(lng, lat) {
     if (clickPopup) {
         clickPopup.remove();
@@ -560,10 +590,9 @@ function buildLegDetails(itinerary) {
         if (leg.headsign) {
             const headsign = document.createElement("div");
             headsign.className = "detail-headsign";
-            headsign.innerHTML = `For <b>${leg.headsign}</b>`;
+            headsign.innerHTML = `${leg.routeShortName} For <b>${leg.headsign}</b>`;
             main.appendChild(headsign);
         }
-
         // ======================
         // FROM → TO
         // ======================
@@ -761,7 +790,7 @@ async function planTrip() {
     });
 
     try {
-        const res = await fetch(`https://api.transitous.org/api/v5/plan?${params.toString()}`);
+        const res = await fetch(`/api/directions?${params.toString()}`);
 
         if (!res.ok) {
             throw new Error(`HTTP ${res.status}`);
@@ -789,13 +818,105 @@ async function planTrip() {
 function saveTrip() {
     console.log("SAVING TRIP");
 }
+function addTransitStopsLayer() {
+    if (map.getSource("transit-stops")) return;
+
+    map.addSource("transit-stops", {
+        type: "vector",
+        tiles: [
+            "https://transit.land/api/v2/tiles/stops/tiles/{z}/{x}/{y}.pbf?apikey=WOo9vL8ECMWN76EcKjsNGfo8YgNZ7c2u"
+        ],
+        minzoom: 0,
+        maxzoom: 14
+    });
+
+    // =========================
+    // ALL STOPS (default)
+    // =========================
+    map.addLayer({
+        id: "all-stops",
+        type: "circle",
+        source: "transit-stops",
+        "source-layer": "stops",
+        paint: {
+            "circle-radius": 3,
+            "circle-color": "#ffffff",
+            "circle-stroke-color": "#111111",
+            "circle-stroke-width": 1
+        }
+    });
+}
+function addTransitLayers() {
+    if (map.getSource("transit-routes")) return;
+
+    map.addSource("transit-routes", {
+        type: "vector",
+        tiles: [
+            "https://transit.land/api/v2/tiles/routes/tiles/{z}/{x}/{y}.pbf?apikey=WOo9vL8ECMWN76EcKjsNGfo8YgNZ7c2u"
+        ],
+        minzoom: 0,
+        maxzoom: 14
+    });
+
+    map.addLayer({
+        id: "subway-lines",
+        type: "line",
+        source: "transit-routes",
+        "source-layer": "routes",
+        filter: ["==", ["get", "route_type"], 1],
+        paint: {
+            "line-color": ["get", "route_color"],
+            "line-width": 3,
+            "line-opacity": 0.9
+        }
+    });
+
+    map.addLayer({
+        id: "rail-lines",
+        type: "line",
+        source: "transit-routes",
+        "source-layer": "routes",
+        filter: ["==", ["get", "route_type"], 2],
+        paint: {
+            "line-color": ["get", "route_color"],
+            "line-width": 3,
+            "line-opacity": 0.9
+        }
+    });
+    map.addLayer({
+        id: "bus-lines",
+        type: "line",
+        source: "transit-routes",
+        "source-layer": "routes",
+        filter: ["==", ["get", "route_type"], 3],
+        paint: {
+            "line-color": ["get", "route_color"],
+            "line-width": 1,
+            "line-opacity": 0.9
+        }
+
+    });
+    map.addLayer({
+        id: "tram-lines",
+        type: "line",
+        source: "transit-routes",
+        "source-layer": "routes",
+        filter: ["==", ["get", "route_type"], 0],
+        paint: {
+            "line-color": ["get", "route_color"],
+            "line-width": 3,
+            "line-opacity": 0.9
+        }
+    });
+}
+
 function addShapesLayer() {
     // avoid duplicate loads
     if (map.getSource("shapes")) return;
 
     map.addSource("shapes", {
         type: "geojson",
-        data: "/api/shapes.geojson"
+        data: "/api/stops"
     });
 
     // white casing (like your routes)
@@ -822,28 +943,6 @@ function addShapesLayer() {
         }
     });
 }
-function addStopsLayer() {
-    // avoid duplicate loads
-    if (map.getSource("stops")) return;
-
-    map.addSource("stops", {
-        type: "geojson",
-        data: "/api/stops.geojson"
-    });
-    map.addLayer({
-        id: "stops-layer",
-        type: "circle",
-        source: "stops",
-        filter: ["==", ["get", "location_type"], 0],
-        paint: {
-            "circle-radius": 2,
-            "circle-color": "#ffffff",
-            "circle-stroke-color": "#111111",
-            "circle-stroke-width": 2
-        }
-    });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
     initMap();
    // document.getElementById("saveBtn").addEventListener("click", saveTrip);

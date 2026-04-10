@@ -1,1 +1,2753 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"route":{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_desc":null,"route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"00AF43","route_text_color":"FFFFFF","route_sort_order":null,"continuous_pickup":null,"continuous_drop_off":null,"network_id":null,"cemv_support":null},"routeAttributes":[]},"geometry":{"type":"LineString","coordinates":[[-118.136131,34.696579],[-118.119293,34.590771],[-118.118301,34.49786],[-118.4339,34.4131],[-118.469406,34.408817],[-118.524818,34.413437],[-118.527306,34.379913],[-118.450172,34.292591],[-118.373398,34.222401],[-118.35,34.206389],[-118.312866,34.178944],[-118.258926,34.123341],[-118.233513,34.055729]]}},{"type":"Feature","properties":{"route":{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_desc":null,"route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"E92076","route_text_color":"FFFFFF","route_sort_order":null,"continuous_pickup":null,"continuous_drop_off":null,"network_id":null,"cemv_support":null},"routeAttributes":[]},"geometry":{"type":"LineString","coordinates":[[-117.2960167,34.0995034],[-117.310089,34.10453],[-117.369888,33.975552],[-117.4702,33.899925],[-117.563454,33.882195],[-117.613586,33.885761],[-117.840523,33.854176],[-117.8573,33.78878],[-117.85598,33.751522],[-117.806015,33.707966],[-117.732933,33.657055],[-117.675003,33.553902],[-117.663696,33.5014],[-117.632736,33.432076],[-117.619598,33.419476],[-117.379875,33.192554]]}},{"type":"Feature","properties":{"route":{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_desc":null,"route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"FF8400","route_text_color":"FFFFFF","route_sort_order":null,"continuous_pickup":null,"continuous_drop_off":null,"network_id":null,"cemv_support":null},"routeAttributes":[]},"geometry":{"type":"LineString","coordinates":[[-117.379875,33.192554],[-117.632736,33.432076],[-117.663696,33.5014],[-117.675003,33.553902],[-117.732933,33.657055],[-117.806015,33.707966],[-117.85598,33.751522],[-117.8573,33.78878],[-117.877998,33.802582],[-117.922295,33.868698],[-117.986855,33.875969],[-118.060165,33.916203],[-118.143776,33.990734],[-118.233513,34.055729]]}},{"type":"Feature","properties":{"route":{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_desc":null,"route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"682E86","route_text_color":"FFFFFF","route_sort_order":null,"continuous_pickup":null,"continuous_drop_off":null,"network_id":null,"cemv_support":null},"routeAttributes":[]},"geometry":{"type":"LineString","coordinates":[[-118.233513,34.055729],[-118.12561,34.006962],[-117.845581,34.007927],[-117.750549,34.058765],[-117.579521,34.039909],[-117.476273,33.978119],[-117.369888,33.975552]]}},{"type":"Feature","properties":{"route":{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_desc":null,"route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"A32136","route_text_color":"FFFFFF","route_sort_order":null,"continuous_pickup":null,"continuous_drop_off":null,"network_id":null,"cemv_support":null},"routeAttributes":[]},"geometry":{"type":"LineString","coordinates":[[-117.184517,34.059074],[-117.2960167,34.0995034],[-117.310089,34.10453],[-117.371887,34.096786],[-117.438095,34.095165],[-117.559937,34.091854],[-117.647507,34.094501],[-117.69558,34.094086],[-117.716354,34.093884],[-117.753052,34.093639],[-117.888893,34.09214],[-117.957397,34.086426],[-118.0355,34.076805],[-118.171646,34.062119],[-118.233513,34.055729]]}},{"type":"Feature","properties":{"route":{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_desc":null,"route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"FFB81D","route_text_color":"000000","route_sort_order":null,"continuous_pickup":null,"continuous_drop_off":null,"network_id":null,"cemv_support":null},"routeAttributes":[]},"geometry":{"type":"LineString","coordinates":[[-119.205025,34.250793],[-119.176308,34.199276],[-119.033829,34.216656],[-118.877876,34.285324],[-118.695549,34.270412],[-118.599411,34.253197],[-118.545097,34.230614],[-118.448219,34.211559],[-118.3526,34.192795],[-118.312866,34.178944],[-118.258926,34.123341],[-118.233513,34.055729]]}},{"type":"Feature","properties":{"route":{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_desc":null,"route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"0071CE","route_text_color":"FFFFFF","route_sort_order":null,"continuous_pickup":null,"continuous_drop_off":null,"network_id":null,"cemv_support":null},"routeAttributes":[]},"geometry":{"type":"LineString","coordinates":[[-118.233513,34.055729],[-118.060165,33.916203],[-117.986855,33.875969],[-117.922295,33.868698],[-117.613586,33.885761],[-117.563454,33.882195],[-117.4702,33.899925],[-117.369888,33.975552],[-117.33450238656532,33.99876309626103],[-117.334417,33.9975],[-117.229836,33.785282],[-117.205711,33.763752]]}},{"type":"Feature","properties":{"stop_id":"128","stop_name":"Anaheim - ARTIC","zone_id":"128","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/anaheim/","routes":[{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.877998,33.802582]}},{"type":"Feature","properties":{"stop_id":"171","stop_name":"Anaheim Canyon","zone_id":"171","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/anaheim-canyon/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.840523,33.854176]}},{"type":"Feature","properties":{"stop_id":"101","stop_name":"Baldwin Park","zone_id":"101","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/baldwin-park/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.957397,34.086426]}},{"type":"Feature","properties":{"stop_id":"130","stop_name":"Buena Park","zone_id":"130","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/buena-park/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.986855,33.875969]}},{"type":"Feature","properties":{"stop_id":"102","stop_name":"Burbank - Downtown","zone_id":"102","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/burbank---downtown/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"},{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.312866,34.178944]}},{"type":"Feature","properties":{"stop_id":"186","stop_name":"Burbank Airport - North (AV Line)","zone_id":"186","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/BurbankAirportNorth/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.35,34.206389]}},{"type":"Feature","properties":{"stop_id":"170","stop_name":"Burbank Airport - South (VC Line)","zone_id":"170","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/burbankairportsouth/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.3526,34.192795]}},{"type":"Feature","properties":{"stop_id":"115","stop_name":"Cal State LA","zone_id":"115","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/cal-state-la/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.171646,34.062119]}},{"type":"Feature","properties":{"stop_id":"166","stop_name":"Camarillo","zone_id":"166","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/camarillo/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-119.033829,34.216656]}},{"type":"Feature","properties":{"stop_id":"103","stop_name":"Chatsworth","zone_id":"103","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/chatsworth/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.599411,34.253197]}},{"type":"Feature","properties":{"stop_id":"114","stop_name":"Claremont","zone_id":"114","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/claremont/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.716354,34.093884]}},{"type":"Feature","properties":{"stop_id":"135","stop_name":"Commerce","zone_id":"135","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/commerce/","routes":[{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.143776,33.990734]}},{"type":"Feature","properties":{"stop_id":"147","stop_name":"Corona - North Main","zone_id":"147","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/corona---north-main/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.563454,33.882195]}},{"type":"Feature","properties":{"stop_id":"173","stop_name":"Corona - West","zone_id":"173","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/corona---west/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.613586,33.885761]}},{"type":"Feature","properties":{"stop_id":"104","stop_name":"Covina","zone_id":"104","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/covina/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.888893,34.09214]}},{"type":"Feature","properties":{"stop_id":"105","stop_name":"El Monte","zone_id":"105","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/el-monte/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.0355,34.076805]}},{"type":"Feature","properties":{"stop_id":"116","stop_name":"Fontana","zone_id":"116","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/fontana/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.438095,34.095165]}},{"type":"Feature","properties":{"stop_id":"174","stop_name":"Fullerton","zone_id":"174","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/fullerton/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.922295,33.868698]}},{"type":"Feature","properties":{"stop_id":"106","stop_name":"Glendale","zone_id":"106","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/glendale/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"},{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.258926,34.123341]}},{"type":"Feature","properties":{"stop_id":"127","stop_name":"Industry","zone_id":"127","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/industry/","routes":[{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"#682E86","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.845581,34.007927]}},{"type":"Feature","properties":{"stop_id":"140","stop_name":"Irvine","zone_id":"140","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/irvine/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.732933,33.657055]}},{"type":"Feature","properties":{"stop_id":"119","stop_name":"Jurupa Valley / Pedley","zone_id":"119","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/jurupa-valleypedley/","routes":[{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"#682E86","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.476273,33.978119]}},{"type":"Feature","properties":{"stop_id":"107","stop_name":"L.A. Union Station","zone_id":"107","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/l.a.-union-station/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"},{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"#682E86","route_text_color":"#FFFFFF"},{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"},{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.233513,34.055729]}},{"type":"Feature","properties":{"stop_id":"141","stop_name":"Laguna Niguel / Mission Viejo","zone_id":"141","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/laguna-niguelmission-viejo/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.675003,33.553902]}},{"type":"Feature","properties":{"stop_id":"162","stop_name":"Lancaster","zone_id":"162","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/lancaster/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.136131,34.696579]}},{"type":"Feature","properties":{"stop_id":"118","stop_name":"Montclair","zone_id":"118","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/montclair/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.69558,34.094086]}},{"type":"Feature","properties":{"stop_id":"126","stop_name":"Montebello / Commerce","zone_id":"126","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/montebellocommerce/","routes":[{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"#682E86","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.12561,34.006962]}},{"type":"Feature","properties":{"stop_id":"108","stop_name":"Moorpark","zone_id":"108","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/moorpark/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.877876,34.285324]}},{"type":"Feature","properties":{"stop_id":"182","stop_name":"Moreno Valley / March Field","zone_id":"182","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/moreno-valleymarch-field/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.334417,33.9975]}},{"type":"Feature","properties":{"stop_id":"175","stop_name":"Newhall","zone_id":"175","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/newhall/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.527306,34.379913]}},{"type":"Feature","properties":{"stop_id":"167","stop_name":"Northridge","zone_id":"167","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/northridge/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.545097,34.230614]}},{"type":"Feature","properties":{"stop_id":"143","stop_name":"Norwalk / Santa Fe Springs","zone_id":"143","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/norwalksanta-fe-springs/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.060165,33.916203]}},{"type":"Feature","properties":{"stop_id":"144","stop_name":"Oceanside","zone_id":"144","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/oceanside/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.379875,33.192554]}},{"type":"Feature","properties":{"stop_id":"117","stop_name":"Ontario - East","zone_id":"117","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/ontario---east/","routes":[{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"#682E86","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.579521,34.039909]}},{"type":"Feature","properties":{"stop_id":"145","stop_name":"Orange","zone_id":"145","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/orange/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.8573,33.78878]}},{"type":"Feature","properties":{"stop_id":"168","stop_name":"Oxnard","zone_id":"168","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/oxnard/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-119.176308,34.199276]}},{"type":"Feature","properties":{"stop_id":"163","stop_name":"Palmdale","zone_id":"163","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/palmdale/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.119293,34.590771]}},{"type":"Feature","properties":{"stop_id":"183","stop_name":"Perris - Downtown","zone_id":"183","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/perris---downtown/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.229836,33.785282]}},{"type":"Feature","properties":{"stop_id":"184","stop_name":"Perris - South","zone_id":"184","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/perris---south/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.205711,33.763752]}},{"type":"Feature","properties":{"stop_id":"120","stop_name":"Pomona - Downtown","zone_id":"120","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/pomona---downtown/","routes":[{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"#682E86","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.750549,34.058765]}},{"type":"Feature","properties":{"stop_id":"109","stop_name":"Pomona - North","zone_id":"109","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/pomona---north/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.753052,34.093639]}},{"type":"Feature","properties":{"stop_id":"121","stop_name":"Rancho Cucamonga","zone_id":"121","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/rancho-cucamonga/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.559937,34.091854]}},{"type":"Feature","properties":{"stop_id":"190","stop_name":"Redlands - Downtown","zone_id":"190","stop_url":"https://metrolinktrains.com/rider-info/general-info/stations/redlands---downtown/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.184517,34.059074]}},{"type":"Feature","properties":{"stop_id":"189","stop_name":"Redlands - Esri","zone_id":"189","stop_url":"https://metrolinktrains.com/rider-info/general-info/stations/redlands---esri/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.196453,34.060143]}},{"type":"Feature","properties":{"stop_id":"191","stop_name":"Redlands - University","zone_id":"191","stop_url":"https://metrolinktrains.com/rider-info/general-info/stations/redlands---university/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.165729,34.058872]}},{"type":"Feature","properties":{"stop_id":"122","stop_name":"Rialto","zone_id":"122","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/rialto/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.371887,34.096786]}},{"type":"Feature","properties":{"stop_id":"123","stop_name":"Riverside - Downtown","zone_id":"123","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/riverside---downtown/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Riverside Line","agency_id":"Metrolink","route_short_name":"RIV Line","route_long_name":"Metrolink Riverside Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line","route_color":"#682E86","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.369888,33.975552]}},{"type":"Feature","properties":{"stop_id":"181","stop_name":"Riverside - Hunter Park / UCR","zone_id":"181","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/riverside---hunter-parkucr/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.33450238656532,33.99876309626103]}},{"type":"Feature","properties":{"stop_id":"148","stop_name":"Riverside - La Sierra","zone_id":"148","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/riverside---la-sierra/","routes":[{"route_id":"91 Line","agency_id":"Metrolink","route_short_name":"91-PV Line","route_long_name":"Metrolink 91-Perris Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=91+Line","route_color":"#0071CE","route_text_color":"#FFFFFF"},{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.4702,33.899925]}},{"type":"Feature","properties":{"stop_id":"185","stop_name":"San Bernardino - Downtown","zone_id":"185","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/san-bernardino-downtown/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.2960167,34.0995034]}},{"type":"Feature","properties":{"stop_id":"188","stop_name":"San Bernardino - Tippecanoe","zone_id":"188","stop_url":"https://metrolinktrains.com/rider-info/general-info/stations/san-bernardino---tippecanoe/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.2604,34.0735]}},{"type":"Feature","properties":{"stop_id":"124","stop_name":"San Bernardino Depot","zone_id":"124","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/sanbernardinodepot/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.310089,34.10453]}},{"type":"Feature","properties":{"stop_id":"152","stop_name":"San Clemente","zone_id":"152","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/san-clemente/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.632736,33.432076]}},{"type":"Feature","properties":{"stop_id":"133","stop_name":"San Clemente Pier","zone_id":"133","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/san-clemente-pier/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.619598,33.419476]}},{"type":"Feature","properties":{"stop_id":"153","stop_name":"San Juan Capistrano","zone_id":"153","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/san-juan-capistrano/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.663696,33.5014]}},{"type":"Feature","properties":{"stop_id":"154","stop_name":"Santa Ana","zone_id":"154","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/santa-ana/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.85598,33.751522]}},{"type":"Feature","properties":{"stop_id":"111","stop_name":"Santa Clarita","zone_id":"111","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/santa-clarita/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.524818,34.413437]}},{"type":"Feature","properties":{"stop_id":"112","stop_name":"Simi Valley","zone_id":"112","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/simi-valley/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.695549,34.270412]}},{"type":"Feature","properties":{"stop_id":"129","stop_name":"Sun Valley","zone_id":"129","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/sun-valley/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.373398,34.222401]}},{"type":"Feature","properties":{"stop_id":"110","stop_name":"Sylmar / San Fernando","zone_id":"110","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/sylmarsan-fernando/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.450172,34.292591]}},{"type":"Feature","properties":{"stop_id":"156","stop_name":"Tustin","zone_id":"156","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/tustin/","routes":[{"route_id":"Inland Emp.-Orange Co. Line","agency_id":"Metrolink","route_short_name":"IE-OC Line","route_long_name":"Metrolink Inland Empire-Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line","route_color":"#E92076","route_text_color":"#FFFFFF"},{"route_id":"Orange County Line","agency_id":"Metrolink","route_short_name":"OC Line","route_long_name":"Metrolink Orange County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line","route_color":"#FF8400","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.806015,33.707966]}},{"type":"Feature","properties":{"stop_id":"125","stop_name":"Upland","zone_id":"125","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/upland/","routes":[{"route_id":"San Bernardino Line","agency_id":"Metrolink","route_short_name":"SB Line","route_long_name":"Metrolink San Bernardino Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line","route_color":"#A32136","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-117.647507,34.094501]}},{"type":"Feature","properties":{"stop_id":"113","stop_name":"Van Nuys","zone_id":"113","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/van-nuys/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.448219,34.211559]}},{"type":"Feature","properties":{"stop_id":"169","stop_name":"Ventura - East","zone_id":"169","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/ventura---east/","routes":[{"route_id":"Ventura County Line","agency_id":"Metrolink","route_short_name":"VC Line","route_long_name":"Metrolink Ventura County Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line","route_color":"#FFB81D","route_text_color":"#000000"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-119.205025,34.250793]}},{"type":"Feature","properties":{"stop_id":"164","stop_name":"Via Princessa","zone_id":"164","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/via-princessa/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.469406,34.408817]}},{"type":"Feature","properties":{"stop_id":"165","stop_name":"Vincent Grade / Acton","zone_id":"165","stop_url":"https://www.metrolinktrains.com/rider-info/general-info/stations/vincent-gradeacton/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.118301,34.49786]}},{"type":"Feature","properties":{"stop_id":"161","stop_name":"Vista Canyon","zone_id":"161","stop_url":"https://metrolinktrains.com/rider-info/general-info/stations/vistacanyon/","routes":[{"route_id":"Antelope Valley Line","agency_id":"Metrolink","route_short_name":"AV Line","route_long_name":"Metrolink Antelope Valley Line","route_type":2,"route_url":"https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line","route_color":"#00AF43","route_text_color":"#FFFFFF"}],"agency_name":"Metrolink Trains"},"geometry":{"type":"Point","coordinates":[-118.4339,34.4131]}}]}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route": {
+          "route_id": "Antelope Valley Line",
+          "agency_id": "Metrolink",
+          "route_short_name": "AV Line",
+          "route_long_name": "Metrolink Antelope Valley Line",
+          "route_desc": null,
+          "route_type": 2,
+          "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+          "route_color": "00AF43",
+          "route_text_color": "FFFFFF",
+          "route_sort_order": null,
+          "continuous_pickup": null,
+          "continuous_drop_off": null,
+          "network_id": null,
+          "cemv_support": null
+        },
+        "routeAttributes": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.136131,
+            34.696579
+          ],
+          [
+            -118.119293,
+            34.590771
+          ],
+          [
+            -118.118301,
+            34.49786
+          ],
+          [
+            -118.4339,
+            34.4131
+          ],
+          [
+            -118.469406,
+            34.408817
+          ],
+          [
+            -118.524818,
+            34.413437
+          ],
+          [
+            -118.527306,
+            34.379913
+          ],
+          [
+            -118.450172,
+            34.292591
+          ],
+          [
+            -118.373398,
+            34.222401
+          ],
+          [
+            -118.35,
+            34.206389
+          ],
+          [
+            -118.312866,
+            34.178944
+          ],
+          [
+            -118.258926,
+            34.123341
+          ],
+          [
+            -118.233513,
+            34.055729
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route": {
+          "route_id": "Inland Emp.-Orange Co. Line",
+          "agency_id": "Metrolink",
+          "route_short_name": "IE-OC Line",
+          "route_long_name": "Metrolink Inland Empire-Orange County Line",
+          "route_desc": null,
+          "route_type": 2,
+          "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+          "route_color": "E92076",
+          "route_text_color": "FFFFFF",
+          "route_sort_order": null,
+          "continuous_pickup": null,
+          "continuous_drop_off": null,
+          "network_id": null,
+          "cemv_support": null
+        },
+        "routeAttributes": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -117.2960167,
+            34.0995034
+          ],
+          [
+            -117.310089,
+            34.10453
+          ],
+          [
+            -117.369888,
+            33.975552
+          ],
+          [
+            -117.4702,
+            33.899925
+          ],
+          [
+            -117.563454,
+            33.882195
+          ],
+          [
+            -117.613586,
+            33.885761
+          ],
+          [
+            -117.840523,
+            33.854176
+          ],
+          [
+            -117.8573,
+            33.78878
+          ],
+          [
+            -117.85598,
+            33.751522
+          ],
+          [
+            -117.806015,
+            33.707966
+          ],
+          [
+            -117.732933,
+            33.657055
+          ],
+          [
+            -117.675003,
+            33.553902
+          ],
+          [
+            -117.663696,
+            33.5014
+          ],
+          [
+            -117.632736,
+            33.432076
+          ],
+          [
+            -117.619598,
+            33.419476
+          ],
+          [
+            -117.379875,
+            33.192554
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route": {
+          "route_id": "Orange County Line",
+          "agency_id": "Metrolink",
+          "route_short_name": "OC Line",
+          "route_long_name": "Metrolink Orange County Line",
+          "route_desc": null,
+          "route_type": 2,
+          "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+          "route_color": "FF8400",
+          "route_text_color": "FFFFFF",
+          "route_sort_order": null,
+          "continuous_pickup": null,
+          "continuous_drop_off": null,
+          "network_id": null,
+          "cemv_support": null
+        },
+        "routeAttributes": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -117.379875,
+            33.192554
+          ],
+          [
+            -117.632736,
+            33.432076
+          ],
+          [
+            -117.663696,
+            33.5014
+          ],
+          [
+            -117.675003,
+            33.553902
+          ],
+          [
+            -117.732933,
+            33.657055
+          ],
+          [
+            -117.806015,
+            33.707966
+          ],
+          [
+            -117.85598,
+            33.751522
+          ],
+          [
+            -117.8573,
+            33.78878
+          ],
+          [
+            -117.877998,
+            33.802582
+          ],
+          [
+            -117.922295,
+            33.868698
+          ],
+          [
+            -117.986855,
+            33.875969
+          ],
+          [
+            -118.060165,
+            33.916203
+          ],
+          [
+            -118.143776,
+            33.990734
+          ],
+          [
+            -118.233513,
+            34.055729
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route": {
+          "route_id": "Riverside Line",
+          "agency_id": "Metrolink",
+          "route_short_name": "RIV Line",
+          "route_long_name": "Metrolink Riverside Line",
+          "route_desc": null,
+          "route_type": 2,
+          "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+          "route_color": "682E86",
+          "route_text_color": "FFFFFF",
+          "route_sort_order": null,
+          "continuous_pickup": null,
+          "continuous_drop_off": null,
+          "network_id": null,
+          "cemv_support": null
+        },
+        "routeAttributes": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.233513,
+            34.055729
+          ],
+          [
+            -118.12561,
+            34.006962
+          ],
+          [
+            -117.845581,
+            34.007927
+          ],
+          [
+            -117.750549,
+            34.058765
+          ],
+          [
+            -117.579521,
+            34.039909
+          ],
+          [
+            -117.476273,
+            33.978119
+          ],
+          [
+            -117.369888,
+            33.975552
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route": {
+          "route_id": "San Bernardino Line",
+          "agency_id": "Metrolink",
+          "route_short_name": "SB Line",
+          "route_long_name": "Metrolink San Bernardino Line",
+          "route_desc": null,
+          "route_type": 2,
+          "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+          "route_color": "A32136",
+          "route_text_color": "FFFFFF",
+          "route_sort_order": null,
+          "continuous_pickup": null,
+          "continuous_drop_off": null,
+          "network_id": null,
+          "cemv_support": null
+        },
+        "routeAttributes": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -117.184517,
+            34.059074
+          ],
+          [
+            -117.2960167,
+            34.0995034
+          ],
+          [
+            -117.310089,
+            34.10453
+          ],
+          [
+            -117.371887,
+            34.096786
+          ],
+          [
+            -117.438095,
+            34.095165
+          ],
+          [
+            -117.559937,
+            34.091854
+          ],
+          [
+            -117.647507,
+            34.094501
+          ],
+          [
+            -117.69558,
+            34.094086
+          ],
+          [
+            -117.716354,
+            34.093884
+          ],
+          [
+            -117.753052,
+            34.093639
+          ],
+          [
+            -117.888893,
+            34.09214
+          ],
+          [
+            -117.957397,
+            34.086426
+          ],
+          [
+            -118.0355,
+            34.076805
+          ],
+          [
+            -118.171646,
+            34.062119
+          ],
+          [
+            -118.233513,
+            34.055729
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route": {
+          "route_id": "Ventura County Line",
+          "agency_id": "Metrolink",
+          "route_short_name": "VC Line",
+          "route_long_name": "Metrolink Ventura County Line",
+          "route_desc": null,
+          "route_type": 2,
+          "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+          "route_color": "FFB81D",
+          "route_text_color": "000000",
+          "route_sort_order": null,
+          "continuous_pickup": null,
+          "continuous_drop_off": null,
+          "network_id": null,
+          "cemv_support": null
+        },
+        "routeAttributes": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -119.205025,
+            34.250793
+          ],
+          [
+            -119.176308,
+            34.199276
+          ],
+          [
+            -119.033829,
+            34.216656
+          ],
+          [
+            -118.877876,
+            34.285324
+          ],
+          [
+            -118.695549,
+            34.270412
+          ],
+          [
+            -118.599411,
+            34.253197
+          ],
+          [
+            -118.545097,
+            34.230614
+          ],
+          [
+            -118.448219,
+            34.211559
+          ],
+          [
+            -118.3526,
+            34.192795
+          ],
+          [
+            -118.312866,
+            34.178944
+          ],
+          [
+            -118.258926,
+            34.123341
+          ],
+          [
+            -118.233513,
+            34.055729
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route": {
+          "route_id": "91 Line",
+          "agency_id": "Metrolink",
+          "route_short_name": "91-PV Line",
+          "route_long_name": "Metrolink 91-Perris Valley Line",
+          "route_desc": null,
+          "route_type": 2,
+          "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+          "route_color": "0071CE",
+          "route_text_color": "FFFFFF",
+          "route_sort_order": null,
+          "continuous_pickup": null,
+          "continuous_drop_off": null,
+          "network_id": null,
+          "cemv_support": null
+        },
+        "routeAttributes": []
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.233513,
+            34.055729
+          ],
+          [
+            -118.060165,
+            33.916203
+          ],
+          [
+            -117.986855,
+            33.875969
+          ],
+          [
+            -117.922295,
+            33.868698
+          ],
+          [
+            -117.613586,
+            33.885761
+          ],
+          [
+            -117.563454,
+            33.882195
+          ],
+          [
+            -117.4702,
+            33.899925
+          ],
+          [
+            -117.369888,
+            33.975552
+          ],
+          [
+            -117.33450238656532,
+            33.99876309626103
+          ],
+          [
+            -117.334417,
+            33.9975
+          ],
+          [
+            -117.229836,
+            33.785282
+          ],
+          [
+            -117.205711,
+            33.763752
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "128",
+        "stop_name": "Anaheim - ARTIC",
+        "zone_id": "128",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/anaheim/",
+        "routes": [
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.877998,
+          33.802582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "171",
+        "stop_name": "Anaheim Canyon",
+        "zone_id": "171",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/anaheim-canyon/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.840523,
+          33.854176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "101",
+        "stop_name": "Baldwin Park",
+        "zone_id": "101",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/baldwin-park/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.957397,
+          34.086426
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "130",
+        "stop_name": "Buena Park",
+        "zone_id": "130",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/buena-park/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.986855,
+          33.875969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "102",
+        "stop_name": "Burbank - Downtown",
+        "zone_id": "102",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/burbank---downtown/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.312866,
+          34.178944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "186",
+        "stop_name": "Burbank Airport - North (AV Line)",
+        "zone_id": "186",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/BurbankAirportNorth/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.35,
+          34.206389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "170",
+        "stop_name": "Burbank Airport - South (VC Line)",
+        "zone_id": "170",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/burbankairportsouth/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3526,
+          34.192795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "115",
+        "stop_name": "Cal State LA",
+        "zone_id": "115",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/cal-state-la/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.171646,
+          34.062119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "166",
+        "stop_name": "Camarillo",
+        "zone_id": "166",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/camarillo/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.033829,
+          34.216656
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "103",
+        "stop_name": "Chatsworth",
+        "zone_id": "103",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/chatsworth/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.599411,
+          34.253197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "114",
+        "stop_name": "Claremont",
+        "zone_id": "114",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/claremont/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.716354,
+          34.093884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "135",
+        "stop_name": "Commerce",
+        "zone_id": "135",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/commerce/",
+        "routes": [
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.143776,
+          33.990734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "147",
+        "stop_name": "Corona - North Main",
+        "zone_id": "147",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/corona---north-main/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.563454,
+          33.882195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "173",
+        "stop_name": "Corona - West",
+        "zone_id": "173",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/corona---west/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.613586,
+          33.885761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "104",
+        "stop_name": "Covina",
+        "zone_id": "104",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/covina/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.888893,
+          34.09214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "105",
+        "stop_name": "El Monte",
+        "zone_id": "105",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/el-monte/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.0355,
+          34.076805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "116",
+        "stop_name": "Fontana",
+        "zone_id": "116",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/fontana/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.438095,
+          34.095165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "174",
+        "stop_name": "Fullerton",
+        "zone_id": "174",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/fullerton/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.922295,
+          33.868698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "106",
+        "stop_name": "Glendale",
+        "zone_id": "106",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/glendale/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.258926,
+          34.123341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "127",
+        "stop_name": "Industry",
+        "zone_id": "127",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/industry/",
+        "routes": [
+          {
+            "route_id": "Riverside Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "RIV Line",
+            "route_long_name": "Metrolink Riverside Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+            "route_color": "#682E86",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.845581,
+          34.007927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "140",
+        "stop_name": "Irvine",
+        "zone_id": "140",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/irvine/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.732933,
+          33.657055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "119",
+        "stop_name": "Jurupa Valley / Pedley",
+        "zone_id": "119",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/jurupa-valleypedley/",
+        "routes": [
+          {
+            "route_id": "Riverside Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "RIV Line",
+            "route_long_name": "Metrolink Riverside Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+            "route_color": "#682E86",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.476273,
+          33.978119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "107",
+        "stop_name": "L.A. Union Station",
+        "zone_id": "107",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/l.a.-union-station/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Riverside Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "RIV Line",
+            "route_long_name": "Metrolink Riverside Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+            "route_color": "#682E86",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.233513,
+          34.055729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "141",
+        "stop_name": "Laguna Niguel / Mission Viejo",
+        "zone_id": "141",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/laguna-niguelmission-viejo/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.675003,
+          33.553902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "162",
+        "stop_name": "Lancaster",
+        "zone_id": "162",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/lancaster/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.136131,
+          34.696579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "118",
+        "stop_name": "Montclair",
+        "zone_id": "118",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/montclair/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.69558,
+          34.094086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "126",
+        "stop_name": "Montebello / Commerce",
+        "zone_id": "126",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/montebellocommerce/",
+        "routes": [
+          {
+            "route_id": "Riverside Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "RIV Line",
+            "route_long_name": "Metrolink Riverside Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+            "route_color": "#682E86",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.12561,
+          34.006962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "108",
+        "stop_name": "Moorpark",
+        "zone_id": "108",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/moorpark/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.877876,
+          34.285324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "182",
+        "stop_name": "Moreno Valley / March Field",
+        "zone_id": "182",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/moreno-valleymarch-field/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.334417,
+          33.9975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "175",
+        "stop_name": "Newhall",
+        "zone_id": "175",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/newhall/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.527306,
+          34.379913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "167",
+        "stop_name": "Northridge",
+        "zone_id": "167",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/northridge/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.545097,
+          34.230614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "143",
+        "stop_name": "Norwalk / Santa Fe Springs",
+        "zone_id": "143",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/norwalksanta-fe-springs/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.060165,
+          33.916203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "144",
+        "stop_name": "Oceanside",
+        "zone_id": "144",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/oceanside/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.379875,
+          33.192554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "117",
+        "stop_name": "Ontario - East",
+        "zone_id": "117",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/ontario---east/",
+        "routes": [
+          {
+            "route_id": "Riverside Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "RIV Line",
+            "route_long_name": "Metrolink Riverside Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+            "route_color": "#682E86",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.579521,
+          34.039909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "145",
+        "stop_name": "Orange",
+        "zone_id": "145",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/orange/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.8573,
+          33.78878
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "168",
+        "stop_name": "Oxnard",
+        "zone_id": "168",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/oxnard/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.176308,
+          34.199276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "163",
+        "stop_name": "Palmdale",
+        "zone_id": "163",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/palmdale/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.119293,
+          34.590771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "183",
+        "stop_name": "Perris - Downtown",
+        "zone_id": "183",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/perris---downtown/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.229836,
+          33.785282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "184",
+        "stop_name": "Perris - South",
+        "zone_id": "184",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/perris---south/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.205711,
+          33.763752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "120",
+        "stop_name": "Pomona - Downtown",
+        "zone_id": "120",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/pomona---downtown/",
+        "routes": [
+          {
+            "route_id": "Riverside Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "RIV Line",
+            "route_long_name": "Metrolink Riverside Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+            "route_color": "#682E86",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.750549,
+          34.058765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "109",
+        "stop_name": "Pomona - North",
+        "zone_id": "109",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/pomona---north/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.753052,
+          34.093639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "121",
+        "stop_name": "Rancho Cucamonga",
+        "zone_id": "121",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/rancho-cucamonga/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.559937,
+          34.091854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "190",
+        "stop_name": "Redlands - Downtown",
+        "zone_id": "190",
+        "stop_url": "https://metrolinktrains.com/rider-info/general-info/stations/redlands---downtown/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.184517,
+          34.059074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "189",
+        "stop_name": "Redlands - Esri",
+        "zone_id": "189",
+        "stop_url": "https://metrolinktrains.com/rider-info/general-info/stations/redlands---esri/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.196453,
+          34.060143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "191",
+        "stop_name": "Redlands - University",
+        "zone_id": "191",
+        "stop_url": "https://metrolinktrains.com/rider-info/general-info/stations/redlands---university/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.165729,
+          34.058872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "122",
+        "stop_name": "Rialto",
+        "zone_id": "122",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/rialto/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.371887,
+          34.096786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "123",
+        "stop_name": "Riverside - Downtown",
+        "zone_id": "123",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/riverside---downtown/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Riverside Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "RIV Line",
+            "route_long_name": "Metrolink Riverside Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Riverside+Line",
+            "route_color": "#682E86",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.369888,
+          33.975552
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "181",
+        "stop_name": "Riverside - Hunter Park / UCR",
+        "zone_id": "181",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/riverside---hunter-parkucr/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.33450238656532,
+          33.99876309626103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "148",
+        "stop_name": "Riverside - La Sierra",
+        "zone_id": "148",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/riverside---la-sierra/",
+        "routes": [
+          {
+            "route_id": "91 Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "91-PV Line",
+            "route_long_name": "Metrolink 91-Perris Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=91+Line",
+            "route_color": "#0071CE",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.4702,
+          33.899925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "185",
+        "stop_name": "San Bernardino - Downtown",
+        "zone_id": "185",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/san-bernardino-downtown/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2960167,
+          34.0995034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "188",
+        "stop_name": "San Bernardino - Tippecanoe",
+        "zone_id": "188",
+        "stop_url": "https://metrolinktrains.com/rider-info/general-info/stations/san-bernardino---tippecanoe/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2604,
+          34.0735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "124",
+        "stop_name": "San Bernardino Depot",
+        "zone_id": "124",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/sanbernardinodepot/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.310089,
+          34.10453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "152",
+        "stop_name": "San Clemente",
+        "zone_id": "152",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/san-clemente/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.632736,
+          33.432076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "133",
+        "stop_name": "San Clemente Pier",
+        "zone_id": "133",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/san-clemente-pier/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.619598,
+          33.419476
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "153",
+        "stop_name": "San Juan Capistrano",
+        "zone_id": "153",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/san-juan-capistrano/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.663696,
+          33.5014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "154",
+        "stop_name": "Santa Ana",
+        "zone_id": "154",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/santa-ana/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.85598,
+          33.751522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "111",
+        "stop_name": "Santa Clarita",
+        "zone_id": "111",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/santa-clarita/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.524818,
+          34.413437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "112",
+        "stop_name": "Simi Valley",
+        "zone_id": "112",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/simi-valley/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.695549,
+          34.270412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "129",
+        "stop_name": "Sun Valley",
+        "zone_id": "129",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/sun-valley/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.373398,
+          34.222401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "110",
+        "stop_name": "Sylmar / San Fernando",
+        "zone_id": "110",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/sylmarsan-fernando/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.450172,
+          34.292591
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "156",
+        "stop_name": "Tustin",
+        "zone_id": "156",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/tustin/",
+        "routes": [
+          {
+            "route_id": "Inland Emp.-Orange Co. Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "IE-OC Line",
+            "route_long_name": "Metrolink Inland Empire-Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=IEOC+Line",
+            "route_color": "#E92076",
+            "route_text_color": "#FFFFFF"
+          },
+          {
+            "route_id": "Orange County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "OC Line",
+            "route_long_name": "Metrolink Orange County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Orange+County+Line",
+            "route_color": "#FF8400",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.806015,
+          33.707966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "125",
+        "stop_name": "Upland",
+        "zone_id": "125",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/upland/",
+        "routes": [
+          {
+            "route_id": "San Bernardino Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "SB Line",
+            "route_long_name": "Metrolink San Bernardino Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=San+Bernardino+Line",
+            "route_color": "#A32136",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.647507,
+          34.094501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "113",
+        "stop_name": "Van Nuys",
+        "zone_id": "113",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/van-nuys/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.448219,
+          34.211559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "169",
+        "stop_name": "Ventura - East",
+        "zone_id": "169",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/ventura---east/",
+        "routes": [
+          {
+            "route_id": "Ventura County Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "VC Line",
+            "route_long_name": "Metrolink Ventura County Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Ventura+County+Line",
+            "route_color": "#FFB81D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.205025,
+          34.250793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "164",
+        "stop_name": "Via Princessa",
+        "zone_id": "164",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/via-princessa/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.469406,
+          34.408817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "165",
+        "stop_name": "Vincent Grade / Acton",
+        "zone_id": "165",
+        "stop_url": "https://www.metrolinktrains.com/rider-info/general-info/stations/vincent-gradeacton/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.118301,
+          34.49786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "161",
+        "stop_name": "Vista Canyon",
+        "zone_id": "161",
+        "stop_url": "https://metrolinktrains.com/rider-info/general-info/stations/vistacanyon/",
+        "routes": [
+          {
+            "route_id": "Antelope Valley Line",
+            "agency_id": "Metrolink",
+            "route_short_name": "AV Line",
+            "route_long_name": "Metrolink Antelope Valley Line",
+            "route_type": 2,
+            "route_url": "https://metrolinktrains.com/schedules/?type=line&lineName=Antelope+Valley+Line",
+            "route_color": "#00AF43",
+            "route_text_color": "#FFFFFF"
+          }
+        ],
+        "agency_name": "Metrolink Trains"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4339,
+          34.4131
+        ]
+      }
+    }
+  ]
+}
